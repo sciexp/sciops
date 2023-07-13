@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: cert-manager
+helmCharts:
+  - name: cert-manager
+    releaseName: cert-manager
+    version: 1.12.2
+    repo: https://charts.jetstack.io
+    valuesInline:
+      installCRDs: true
+      namespace: "cert-manager"
+      global:
+        leaderElection:
+          namespace: "cert-manager"
+      resources:
+        requests:
+          cpu: 10m
+          memory: 32Mi
+        limits:
+          cpu: 20m
+          memory: 64Mi
