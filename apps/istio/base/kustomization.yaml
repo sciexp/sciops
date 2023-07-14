@@ -3,11 +3,11 @@ kind: Kustomization
 namespace: istio-system
 resources:
   - peerauthentication.yaml
-  - https://raw.githubusercontent.com/istio/istio/release-1.16/samples/addons/jaeger.yaml
+  - https://raw.githubusercontent.com/istio/istio/release-1.18/samples/addons/jaeger.yaml
 helmCharts:
   - name: base
     releaseName: base
-    version: 1.16.2
+    version: 1.18.0
     repo: https://istio-release.storage.googleapis.com/charts
     includeCRDs: true
     valuesInline:
@@ -16,7 +16,7 @@ helmCharts:
           enableAnalysis: true
   - name: istiod
     releaseName: istiod
-    version: 1.16.2
+    version: 1.18.0
     repo: https://istio-release.storage.googleapis.com/charts
     valuesInline:
       fullnameOverride: istiod
