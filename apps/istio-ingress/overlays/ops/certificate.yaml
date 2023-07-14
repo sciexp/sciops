@@ -1,0 +1,28 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cluster.sciops.net
+spec:
+  commonName: cluster.sciops.net
+  dnsNames:
+    - cluster.sciops.net
+    - "*.cluster.sciops.net"
+  issuerRef:
+    kind: ClusterIssuer
+    name: cluster.sciops.net
+  secretName: cluster.sciops.net
+
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: hostname.net
+# spec:
+#   commonName: hostname.net
+#   dnsNames:
+#     - hostname.net
+#     - "*.hostname.net"
+#   issuerRef:
+#     kind: ClusterIssuer
+#     name: hostname.net
+#   secretName: hostname.net

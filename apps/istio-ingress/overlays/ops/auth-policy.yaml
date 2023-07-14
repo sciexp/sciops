@@ -1,0 +1,28 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: auth-policy
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      app: istio-ingressgateway
+  action: ALLOW
+  rules:
+    - to:
+        - operation:
+            hosts:
+              - "*.cluster.sciops.net"
+      # when:
+      #   - key: request.headers[x-envoy-external-address]
+      #     values:
+      #       - "101.99.88.77"
+    - to:
+        - operation:
+            hosts:
+              - "cluster.sciops.net" # Homepage
+              - "www.cluster.sciops.net" # Homepage
+              - "argocd.cluster.sciops.net" # github repository badge
+              # - "dex.cluster.sciops.net" # kube-login
+              # - "grafana.cluster.sciops.net" # grafana/backstage
+              # - "sonar.cluster.sciops.net" # github pipelines
