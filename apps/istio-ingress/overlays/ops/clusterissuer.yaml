@@ -10,17 +10,13 @@ spec:
     privateKeySecretRef:
       name: issuer-key
     server: https://acme-v02.api.letsencrypt.org/directory
-    # solvers:
-    #   - selector:
-    #       dnsZones:
-    #         - sciops.net
-    #     dns01:
-    #       clouddns:
-    #         project: 
-    #           serviceAccountSecretRef:
-    #           name: <secret-name>
-    #           key: <key>
-    #         region: us-central1
+    solvers:
+      - dns01:
+          clouddns:
+            project: sciexp-111111
+            serviceAccountSecretRef:
+              name: clouddns-dns01-solver-svc-acct
+              key: key.json
 # ---
 # apiVersion: cert-manager.io/v1
 # kind: ClusterIssuer
