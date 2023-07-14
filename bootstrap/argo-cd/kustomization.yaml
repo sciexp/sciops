@@ -1,17 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 configMapGenerator:
 - behavior: merge
+  files:
+    - conf/repository.credentials
+    - conf/resource.customizations
   literals:
-  - |
-    repository.credentials=- passwordSecret:
-        key: git_token
-        name: autopilot-secret
-      url: https://github.com/
-      usernameSecret:
-        key: git_username
-        name: autopilot-secret
-  - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor
-    LoadRestrictionsNone"
+    - admin.enabled=true
+    - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor
+      LoadRestrictionsNone"
   name: argocd-cm
 kind: Kustomization
 namespace: argocd
