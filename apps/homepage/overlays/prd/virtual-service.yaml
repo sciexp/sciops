@@ -2,18 +2,21 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: hajimari
+  name: homepage
   namespace: homepage
   annotations:
     link.argocd.argoproj.io/external-link: https://cluster.sciops.net
 spec:
+  hosts:
+    - "cluster.sciops.net"
   gateways:
     - istio-system/istio-ingressgateway
-  hosts:
-    - cluster.sciops.net
   http:
-    - route:
-      - destination:
-          host: hajimari
-          port:
-            number: 3000
+    - match:
+        - uri: 
+            prefix: /
+      route:
+        - destination:
+            host: hajimari.homepage.svc.cluster.local
+            port:
+              number: 3000

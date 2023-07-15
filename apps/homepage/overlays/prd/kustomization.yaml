@@ -4,6 +4,9 @@ namespace: homepage
 resources:
   - ../../base
   - virtual-service.yaml
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: cluster.sciops.net
 helmCharts:
   - name: hajimari
     releaseName: hajimari
@@ -18,3 +21,8 @@ helmCharts:
           ports:
             http:
               port: 3000
+      ingress:
+        main:
+          enabled: false
+          hosts:
+            - host: cluster.sciops.net
