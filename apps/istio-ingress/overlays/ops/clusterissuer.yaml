@@ -1,4 +1,4 @@
-apiVersion: cert-manager.io/v1alpha3
+apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   labels:
@@ -11,14 +11,12 @@ spec:
       name: issuer-key
     server: https://acme-v02.api.letsencrypt.org/directory
     solvers:
-      - DNS01:
+      - dns01:
           cloudDNS:
-            region: us-central1
             project: sciexp-111111
             serviceAccountSecretRef:
               name: clouddns-dns01-solver-svc-acct
               key: key.json
-        selector: {}
 # ---
 # apiVersion: cert-manager.io/v1
 # kind: ClusterIssuer
