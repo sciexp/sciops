@@ -12,7 +12,7 @@ spec:
   servers:
     - hosts:
         - "*.cluster.sciops.net"
-        - "*.hostname.net"
+        # - "*.hostname.net"
       port:
         name: http
         number: 80

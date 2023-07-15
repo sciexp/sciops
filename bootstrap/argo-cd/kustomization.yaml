@@ -1,15 +1,25 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
-configMapGenerator:
-- behavior: merge
-  files:
-    - conf/repository.credentials
-    - conf/resource.customizations
-  literals:
-    - admin.enabled=true
-    - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor
-      LoadRestrictionsNone"
-  name: argocd-cm
 kind: Kustomization
 namespace: argocd
 resources:
-- github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.15
+  - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.15
+  - virtual-service.yaml
+configMapGenerator:
+  - behavior: merge
+    literals:
+      - server.insecure="true"
+    name: argocd-cmd-params-cm
+  - behavior: merge
+    files:
+      - conf/repository.credentials
+      - conf/resource.customizations
+      - conf/repositories
+    literals:
+      - admin.enabled=true
+      - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor
+        LoadRestrictionsNone"
+      - url=https://argocd.cluster.sciops.net
+    name: argocd-cm
+    options:
+      labels:
+        app.kubernetes.io/part-of: argocd
