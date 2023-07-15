@@ -78,10 +78,14 @@ spec:
         namespace: '{{ destNamespace }}'
         server: '{{ destServer }}'
       ignoreDifferences:
-      - group: argoproj.io
-        jsonPointers:
-        - /status
-        kind: Application
+        - group: argoproj.io
+          kind: Application
+          jsonPointers:
+            - /status
+        - group: networking.istio.io
+          kind: VirtualService
+          jsonPointers:
+            - /spec/http/0
       project: prd
       source:
         path: '{{ srcPath }}'
@@ -92,4 +96,6 @@ spec:
           allowEmpty: true
           prune: true
           selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
 status: {}

@@ -1,0 +1,11 @@
+{
+  "appName": "homepage",
+  "userGivenName": "homepage",
+  "destNamespace": "homepage",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/homepage/overlays/prd",
+  "srcRepoURL": "https://github.com/scientistexperience/test-cluster-ops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
