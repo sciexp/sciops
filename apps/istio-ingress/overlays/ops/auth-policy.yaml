@@ -23,6 +23,6 @@ spec:
               - "cluster.sciops.net" # Homepage
               - "www.cluster.sciops.net" # Homepage
               - "argocd.cluster.sciops.net" # github repository badge
-              # - "dex.cluster.sciops.net" # kube-login
+              - "dex.cluster.sciops.net" # dex
               # - "grafana.cluster.sciops.net" # grafana/backstage
               # - "sonar.cluster.sciops.net" # github pipelines

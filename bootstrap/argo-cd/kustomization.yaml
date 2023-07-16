@@ -4,6 +4,9 @@ namespace: argocd
 resources:
   - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.15
   - virtual-service.yaml
+  - secrets.yaml
+patches:
+  - path: argocd-server.yaml
 configMapGenerator:
   - behavior: merge
     literals:
@@ -11,6 +14,7 @@ configMapGenerator:
     name: argocd-cmd-params-cm
   - behavior: merge
     files:
+      - conf/dex.config
       - conf/repository.credentials
       - conf/resource.customizations
       - conf/repositories
