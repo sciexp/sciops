@@ -1,0 +1,41 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: observability
+commonLabels:
+  app: jaeger-operator
+  version: 2.45.0
+helmCharts:
+  - name: jaeger-operator
+    releaseName: jaegertracing
+    version: 2.45.0
+    repo: https://jaegertracing.github.io/helm-charts
+    includeCRDs: true
+    namespace: observability
+    valuesInline:
+      fullnameOverride: jaeger-operator
+      rbac:
+        create: true
+        clusterRole: true
+
+  - name: jaeger
+    releaseName: jaeger
+    version: 1.2.4
+    repo: https://charts.bitnami.com/bitnami
+    namespace: observability
+    valuesInline:
+      commonLabels:
+        app: jaeger
+        version: 1.45.0
+      cassandra:
+        enabled: true
+        # clusterDomain: cluster.local # Just need if cluster is different of cluster.local
+        # dbUser:
+        #   existingSecret: jaeger-cassandra
+      query:
+        extraEnvVars:
+          - name: METRICS_STORAGE_TYPE
+            value: prometheus
+          - name: PROMETHEUS_SERVER_URL
+            value: http://prometheus-server.monitoring
+          - name: PROMETHEUS_QUERY_SUPPORT_SPANMETRICS_CONNECTOR
+            value: "true"
