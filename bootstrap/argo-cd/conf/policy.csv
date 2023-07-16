@@ -1,0 +1,24 @@
+# admin all-clusters roles =====================================
+p, role:org-admin, applications, *, */*, allow
+p, role:org-admin, clusters, *, *, allow
+p, role:org-admin, repositories, get, *, allow
+p, role:org-admin, repositories, create, *, allow
+p, role:org-admin, repositories, update, *, allow
+p, role:org-admin, repositories, delete, *, allow
+p, role:org-admin, logs, get, *, allow
+p, role:org-admin, exec, create, */*, allow
+
+# Policy for Developers Team =====================================
+p, role:dev-team, clusters, get, *, allow
+p, role:dev-team, repositories, get, *, allow
+p, role:dev-team, applications, sync, */*, allow
+p, role:dev-team, applications, get, */*, allow
+p, role:dev-team, applications, delete, */pod, allow
+p, role:dev-team, applications, action/*, */*, allow
+
+# Groups here resembles to Github Teams
+g, sciops:platform, role:org-admin
+g, sciops:dev, role:dev-team
+
+# Backstage user permissions
+g, backstage, role:org-admin

@@ -27,3 +27,12 @@ configMapGenerator:
     options:
       labels:
         app.kubernetes.io/part-of: argocd
+  - behavior: merge
+    files:
+      - conf/policy.csv
+    literals:
+      - policy.default="role:readonly"
+    name: argocd-rbac-cm
+    options:
+      labels:
+        app.kubernetes.io/part-of: argocd
