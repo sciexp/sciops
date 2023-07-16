@@ -1,0 +1,122 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: dex
+resources:
+  - ns.yaml
+helmCharts:
+  - name: dex
+    releaseName: dex
+    version: 0.13.0
+    repo: https://charts.dexidp.io
+    valuesInline:
+      image:
+        tag: v2.35.3
+      envVars:
+        - name: GITHUB_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: github-client
+              key: client-id
+        - name: GITHUB_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: github-client
+              key: client-secret
+        - name: JAEGER_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: github-client
+              key: jaeger-secret
+        - name: KIALI_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: github-client
+              key: kiali-secret
+        # - name: KUBECOST_CLIENT_SECRET
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: github-client
+        #       key: kubecost-secret
+        # - name: DEX_K8S_AUTH_SECRET
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: github-client
+        #       key: DEX_K8S_AUTH_SECRET
+      config:
+        issuer: https://dex.cluster.sciops.net
+        storage:
+          type: memory
+        connectors:
+          - type: github
+            # Required field for connector id.
+            id: github
+            # Required field for connector name.
+            name: GitHub
+            config:
+              # Credentials can be string literals or environment variables.
+              clientID: $GITHUB_CLIENT_ID
+              clientSecret: $GITHUB_CLIENT_SECRET
+              redirectURI: https://dex.cluster.sciops.net/callback
+              orgs:
+                - name: sciops
+                  teams:
+                    - platform
+              loadAllGroups: false
+              teamNameField: slug
+              useLoginAsID: false
+        oauth2:
+          skipApprovalScreen: true
+        staticClients:
+          - id: example-app
+            name: "Example App"
+            redirectURIs:
+              - "http://127.0.0.1:5555/callback"
+            secret: ZXhhbXBsZS1hcHAtc2VjcmV0
+
+          - id: jaeger-query
+            name: "Jaeger"
+            redirectURIs:
+              - "https://jaeger.cluster.sciops.net/oauth2/callback"
+            SecretEnv: JAEGER_CLIENT_SECRET
+
+          - id: kiali-client
+            name: "Kiali"
+            redirectURIs:
+              - "https://kiali.cluster.sciops.net/kiali"
+            SecretEnv: KIALI_CLIENT_SECRET
+
+          # - id: kubecost-client
+          #   name: "KubeCost"
+          #   redirectURIs:
+          #     - "https://kubecost.cluster.sciops.net/model/oidc/authorize"
+          #   SecretEnv: KUBECOST_CLIENT_SECRET
+
+          # - id: dex-k8s-authenticator
+          #   name: dex-k8s-authenticator
+          #   redirectURIs:
+          #     - https://kube-login.cluster.sciops.net/callback/
+          #   SecretEnv: DEX_K8S_AUTH_SECRET
+
+  # - name: dex-k8s-authenticator
+  #   releaseName: dex-k8s-authenticator
+  #   version: 0.0.2
+  #   repo: https://charts.sagikazarmark.dev
+  #   valuesInline:
+  #     envFrom:
+  #       - secretRef:
+  #           name: github-client
+  #     config:
+  #       web_path_prefix: /
+  #       debug: true
+  #       clusters:
+  #         - name: sciops-dev
+  #           short_description: "GCP GKE Cluster - sciops-dev"
+  #           description: "GCP GKE Cluster - sciops-dev"
+  #           client_id: sciops-dev
+  #           client_secret: ${DEX_K8S_AUTH_SECRET}
+  #           issuer: https://dex.cluster.sciops.net
+  #           k8s_master_uri: https://192.168.0.1
+  #           redirect_uri: https://kube-login.cluster.sciops.net/callback/
+  #           # k8s_ca_pem: |
+  #           #   -----BEGIN CERTIFICATE-----
+  #           #   -----END CERTIFICATE-----
