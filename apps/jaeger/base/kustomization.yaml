@@ -29,8 +29,8 @@ helmCharts:
       cassandra:
         enabled: true
         # clusterDomain: cluster.local # Just need if cluster is different of cluster.local
-        # dbUser:
-        #   existingSecret: jaeger-cassandra
+        dbUser:
+          existingSecret: jaeger-cassandra
       query:
         extraEnvVars:
           - name: METRICS_STORAGE_TYPE
