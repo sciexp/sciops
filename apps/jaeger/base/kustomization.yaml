@@ -3,11 +3,11 @@ kind: Kustomization
 namespace: observability
 commonLabels:
   app: jaeger-operator
-  version: 2.45.0
+  version: 2.46.2
 helmCharts:
   - name: jaeger-operator
     releaseName: jaegertracing
-    version: 2.45.0
+    version: 2.46.2
     repo: https://jaegertracing.github.io/helm-charts
     includeCRDs: true
     namespace: observability
@@ -19,13 +19,13 @@ helmCharts:
 
   - name: jaeger
     releaseName: jaeger
-    version: 1.2.4
+    version: 1.2.7
     repo: https://charts.bitnami.com/bitnami
     namespace: observability
     valuesInline:
       commonLabels:
         app: jaeger
-        version: 1.45.0
+        version: 1.47.0
       cassandra:
         enabled: true
         # clusterDomain: cluster.local # Just need if cluster is different of cluster.local
