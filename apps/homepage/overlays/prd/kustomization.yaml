@@ -20,6 +20,6 @@ helmCharts:
               port: 3000
       ingress:
         main:
-          enabled: true
+          enabled: false
           hosts:
             - host: cluster.sciops.net
