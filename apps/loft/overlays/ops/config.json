@@ -1,0 +1,11 @@
+{
+  "appName": "loft",
+  "userGivenName": "loft",
+  "destNamespace": "loft",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/loft/overlays/ops",
+  "srcRepoURL": "https://github.com/scientistexperience/test-cluster-ops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}

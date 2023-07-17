@@ -1,0 +1,22 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: loft
+  namespace: loft
+  annotations:
+    link.argocd.argoproj.io/external-link: https://loft.cluster.sciops.net
+spec:
+  hosts:
+    - "loft.cluster.sciops.net"
+  gateways:
+    - istio-system/istio-ingressgateway
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            port:
+              number: 9898
+            host: loft.loft.svc.cluster.local
