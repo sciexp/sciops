@@ -12,6 +12,7 @@ spec:
   servers:
     - hosts:
         - "*.cluster.sciops.net"
+        - "cluster.sciops.net"
         # - "*.hostname.net"
       port:
         name: http
@@ -28,6 +29,7 @@ spec:
         credentialName: cluster.sciops.net # This should match the Certificate secretName
       hosts:
         - "*.cluster.sciops.net" # This should match a DNS name in the Certificate
+        - "cluster.sciops.net"
     # - port:
     #     name: https-hostname
     #     number: 443
