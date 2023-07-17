@@ -19,18 +19,18 @@ helmCharts:
 
   - name: jaeger
     releaseName: jaeger
-    version: 1.2.7
+    version: 1.2.5
     repo: https://charts.bitnami.com/bitnami
     namespace: observability
     valuesInline:
       commonLabels:
         app: jaeger
-        version: 1.47.0
+        version: 1.46.0
       cassandra:
         enabled: true
         # clusterDomain: cluster.local # Just need if cluster is different of cluster.local
-        # dbUser:
-        #   existingSecret: jaeger-cassandra
+        dbUser:
+          existingSecret: jaeger-cassandra
       query:
         extraEnvVars:
           - name: METRICS_STORAGE_TYPE
