@@ -13,16 +13,16 @@ spec:
         - operation:
             hosts:
               - "*.cluster.sciops.net"
-      # when:
-      #   - key: request.headers[x-envoy-external-address]
-      #     values:
-      #       - "101.99.88.77"
+      when:
+        - key: request.headers[x-envoy-external-address]
+          values:
+            - "146.115.69.127"
     - to:
         - operation:
             hosts:
               - "cluster.sciops.net" # Homepage
               - "www.cluster.sciops.net" # Homepage
-              - "argocd.cluster.sciops.net" # github repository badge
+              # - "argocd.cluster.sciops.net" # github repository badge
               - "dex.cluster.sciops.net" # dex
               # - "grafana.cluster.sciops.net" # grafana/backstage
               # - "sonar.cluster.sciops.net" # github pipelines
