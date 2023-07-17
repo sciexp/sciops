@@ -20,6 +20,7 @@ spec:
     - to:
         - operation:
             hosts:
+              - "homepage.cluster.sciops.net" # Homepage
               - "cluster.sciops.net" # Homepage
               - "www.cluster.sciops.net" # Homepage
               # - "argocd.cluster.sciops.net" # github repository badge
