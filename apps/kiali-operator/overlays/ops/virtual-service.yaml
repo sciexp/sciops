@@ -1,0 +1,25 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: kiali
+  namespace: kiali-operator
+  labels:
+    app: kiali
+  annotations:
+    link.argocd.argoproj.io/external-link: https://kiali.cluster.sciops.net
+spec:
+  gateways:
+    - istio-system/istio-ingressgateway
+  hosts:
+    - "kiali.cluster.sciops.net"
+  http:
+    - headers:
+        request:
+          set:
+            X-Forwarded-Port: "443"
+      route:
+        - destination:
+            host: kiali.kiali-operator.svc.cluster.local
+            port:
+              number: 20001
