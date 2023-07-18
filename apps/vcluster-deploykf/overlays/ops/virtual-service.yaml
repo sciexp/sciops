@@ -1,0 +1,22 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: vcluster-deploykf
+  namespace: vcluster-deploykf
+  annotations:
+    link.argocd.argoproj.io/external-link: https://deploykf.cluster.sciops.net
+spec:
+  hosts:
+    - "deploykf.cluster.sciops.net"
+  gateways:
+    - istio-system/istio-ingressgateway
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            port:
+              number: 6443
+            host: vcluster-deploykf.vcluster-deploykf.svc.cluster.local

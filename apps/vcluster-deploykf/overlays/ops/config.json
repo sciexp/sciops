@@ -1,0 +1,11 @@
+{
+  "appName": "vcluster-deploykf",
+  "userGivenName": "vcluster-deploykf",
+  "destNamespace": "vcluster-deploykf",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/vcluster-deploykf/overlays/ops",
+  "srcRepoURL": "https://github.com/scientistexperience/test-cluster-ops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
