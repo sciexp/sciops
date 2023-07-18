@@ -18,5 +18,5 @@ spec:
       route:
         - destination:
             port:
-              number: 9898
+              number: 80
             host: loft.loft.svc.cluster.local
