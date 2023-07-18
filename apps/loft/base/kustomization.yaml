@@ -19,11 +19,17 @@ helmCharts:
             name: github-secrets
             key: client-secret
       config:
-          loftHost: https://loft.cluster.sciops.net
-          audit:
-              enabled: true
-          auth:
-            github:
-              clientId: $CLIENT_ID
-              clientSecret: $CLIENT_SECRET
-              redirectURI: https://loft.cluster.sciops.net/auth/github/callback
+        loftHost: https://loft.cluster.sciops.net
+        audit:
+            enabled: true
+        auth:
+          password:
+            disable: true
+          github:
+            clientId: $CLIENT_ID
+            clientSecret: $CLIENT_SECRET
+            redirectURI: https://loft.cluster.sciops.net/auth/github/callback
+            orgs:
+              name: sciops
+              teams:
+                - platform
