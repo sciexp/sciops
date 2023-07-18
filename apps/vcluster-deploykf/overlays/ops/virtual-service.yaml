@@ -18,5 +18,5 @@ spec:
       route:
         - destination:
             port:
-              number: 6443
-            host: vcluster-deploykf.vcluster-deploykf.svc.cluster.local
+              number: 443
+            host: vcluster.vcluster-deploykf.svc.cluster.local
