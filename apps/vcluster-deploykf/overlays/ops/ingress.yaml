@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: nginx 
   rules:
-  - host: "deploykf.cluster.sciops.net"
+  - host: "k8s.deploykf.cluster.velocity.net"
     http:
       paths:
       - backend:

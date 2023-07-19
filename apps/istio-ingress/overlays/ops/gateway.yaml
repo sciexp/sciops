@@ -17,7 +17,7 @@ spec:
       tls:
         mode: PASSTHROUGH
       hosts:
-        - "deploykf.cluster.sciops.net"
+        - "k8s.deploykf.cluster.velocity.net"
     - hosts:
         - "*.cluster.sciops.net"
         - "cluster.sciops.net"

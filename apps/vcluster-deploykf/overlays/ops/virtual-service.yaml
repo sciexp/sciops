@@ -5,16 +5,16 @@ metadata:
   name: vcluster-deploykf
   namespace: vcluster-deploykf
   annotations:
-    link.argocd.argoproj.io/external-link: https://deploykf.cluster.sciops.net
+    link.argocd.argoproj.io/external-link: https://k8s.deploykf.cluster.velocity.net
 spec:
   hosts:
-    - "deploykf.cluster.sciops.net"
+    - "k8s.deploykf.cluster.velocity.net"
   gateways:
     - istio-system/istio-ingressgateway
   tls:
     - match:
         - sniHosts:
-            - "deploykf.cluster.sciops.net"
+            - "k8s.deploykf.cluster.velocity.net"
       route:
         - destination:
             host: vcluster
