@@ -4,7 +4,7 @@ namespace: vcluster-deploykf
 helmCharts:
   - name: vcluster
     includeCRDs: true
-    releaseName: vcluster
+    releaseName: vcluster-test
     version: 0.15.2
     repo: https://charts.loft.sh
     valuesInline:
