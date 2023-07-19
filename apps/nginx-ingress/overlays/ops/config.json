@@ -1,7 +1,7 @@
 {
   "appName": "nginx-ingress",
   "userGivenName": "nginx-ingress",
-  "destNamespace": "kube-system",
+  "destNamespace": "nginx-ingress",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/nginx-ingress/overlays/ops",
   "srcRepoURL": "https://github.com/scientistexperience/test-cluster-ops.git",
