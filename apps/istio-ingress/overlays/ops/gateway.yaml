@@ -31,7 +31,6 @@ spec:
         - "argocd.cluster.sciops.net"
         - "grafana.cluster.sciops.net"
         - "cluster.sciops.net"
-        - "k8s.deploykf.cluster.sciops.net"
     - port:
         name: https-sciops
         number: 443
