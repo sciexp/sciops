@@ -16,3 +16,4 @@ helmCharts:
         kubeConfigContextName: "vcluster-deploykf"
       storage:
         persistence: true
+      fallbackHostDns: true
