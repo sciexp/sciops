@@ -18,3 +18,18 @@ helmCharts:
         kubeConfigContextName: "vcluster"
       storage:
         persistence: false
+      ingress:
+        enabled: true
+        ingressClassName: "nginx"
+        host: "deploykf.cluster.sciops.net"
+        rules:
+        - host: "deploykf.cluster.sciops.net"
+          http:
+            paths:
+            - backend:
+                service:
+                  name: vcluster
+                  port: 
+                    number: 443
+              path: /
+              pathType: ImplementationSpecific
