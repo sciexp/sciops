@@ -11,12 +11,12 @@ spec:
     - "deploykf.cluster.sciops.net"
   gateways:
     - istio-system/istio-ingressgateway
-  http:
+  tls:
     - match:
-        - uri:
-            prefix: /
+        - sniHosts:
+            - "deploykf.cluster.sciops.net"
       route:
         - destination:
+            host: vcluster.vcluster-deploykf.svc.cluster.local
             port:
               number: 443
-            host: vcluster.vcluster-deploykf.svc.cluster.local
