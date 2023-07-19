@@ -9,9 +9,8 @@ helmCharts:
     repo: https://kubernetes.github.io/ingress-nginx
     valuesInline:
       fullnameOverride: ingress-nginx
-      publishService:
-        enabled: true
-      defaultBackend:
-        enabled: true
+      controller:
+        publishService:
+          enabled: true
         extraArgs:
           enable-ssl-passthrough: true
