@@ -11,8 +11,8 @@ helmCharts:
       fullnameOverride: vcluster-deploykf
       syncer:
         extraArgs:
-          - --tls-san="k8s.deploykf.cluster.velocity.net"
-          - --out-kube-config-server="https://k8s.deploykf.cluster.velocity.net"
+          - --tls-san="k8s.deploykf.cluster.sciops.net"
+          - --out-kube-config-server="https://k8s.deploykf.cluster.sciops.net"
         kubeConfigContextName: "vcluster-deploykf"
       storage:
         persistence: true
