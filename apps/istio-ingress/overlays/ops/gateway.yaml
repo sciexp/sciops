@@ -10,14 +10,14 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-    - port:
-        name: https-deploykf
-        number: 443
-        protocol: HTTPS
-      tls:
-        mode: PASSTHROUGH
-      hosts:
-        - "k8s-deploykf.cluster.sciops.net"
+    # - port:
+    #     name: https-deploykf
+    #     number: 443
+    #     protocol: HTTPS
+    #   tls:
+    #     mode: PASSTHROUGH
+    #   hosts:
+    #     - "k8s-deploykf.cluster.sciops.net"
     - port:
         name: http
         number: 80
@@ -30,8 +30,9 @@ spec:
         - "dex.cluster.sciops.net"
         - "argocd.cluster.sciops.net"
         - "grafana.cluster.sciops.net"
+        - "loft.cluster.sciops.net"
         - "cluster.sciops.net"
-        - "k8s-deploykf.cluster.sciops.net"
+        # - "k8s-deploykf.cluster.sciops.net"
     - port:
         name: https-sciops
         number: 443
@@ -45,6 +46,7 @@ spec:
         - "dex.cluster.sciops.net"
         - "argocd.cluster.sciops.net"
         - "grafana.cluster.sciops.net"
+        - "loft.cluster.sciops.net"
         - "cluster.sciops.net"
     # - port:
     #     name: https-hostname
