@@ -17,6 +17,6 @@ spec:
             - "deploykf.cluster.sciops.net"
       route:
         - destination:
-            host: vcluster.vcluster-deploykf.svc.cluster.local
+            host: vcluster
             port:
               number: 443
