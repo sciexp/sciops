@@ -2,19 +2,17 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: vcluster-deploykf
 helmCharts:
-  - name: vcluster
+  - name: vcluster-k8s
     includeCRDs: true
     releaseName: vcluster
     version: 0.15.2
     repo: https://charts.loft.sh
     valuesInline:
       fullnameOverride: vcluster-deploykf
-      service:
-        type: ClusterIP
       syncer:
         extraArgs:
           - --tls-san="deploykf.cluster.sciops.net"
           - --out-kube-config-server="https://deploykf.cluster.sciops.net"
-        kubeConfigContextName: "vcluster"
+        kubeConfigContextName: "vcluster-deploykf"
       storage:
         persistence: true
