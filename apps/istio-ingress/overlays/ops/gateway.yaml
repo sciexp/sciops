@@ -10,14 +10,14 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-    - port:
-        name: https-deploykf
-        number: 443
-        protocol: HTTPS
-      tls:
-        mode: PASSTHROUGH
-      hosts:
-        - "deploykf.cluster.sciops.net"
+    # - port:
+    #     name: https-deploykf
+    #     number: 443
+    #     protocol: HTTPS
+    #   tls:
+    #     mode: PASSTHROUGH
+    #   hosts:
+    #     - "deploykf.cluster.sciops.net"
     - hosts:
         - "*.cluster.sciops.net"
         - "cluster.sciops.net"
