@@ -11,10 +11,14 @@ spec:
     - "k8s.deploykf.cluster.sciops.net"
   gateways:
     - istio-system/istio-ingressgateway
-  tls:
+  # tls:
+  #   - match:
+  #       - sniHosts:
+  #           - "k8s.deploykf.cluster.sciops.net"
+  http:
     - match:
-        - sniHosts:
-            - "k8s.deploykf.cluster.sciops.net"
+        - uri:
+            prefix: /
       route:
         - destination:
             host: vcluster.vcluster-deploykf.svc.cluster.local
