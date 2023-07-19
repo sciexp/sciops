@@ -4,14 +4,13 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: HTTPS
-    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
   name: vcluster-ingress
   namespace: vcluster-deploykf
 spec:
   ingressClassName: nginx 
   rules:
-  - host: "k8s.deploykf.cluster.sciops.net"
+  - host: "k8s-deploykf.cluster.sciops.net"
     http:
       paths:
       - backend:
@@ -21,3 +20,6 @@ spec:
               number: 443
         path: /
         pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - "k8s-deploykf.cluster.sciops.net"
