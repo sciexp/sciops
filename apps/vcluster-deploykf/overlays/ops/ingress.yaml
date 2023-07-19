@@ -16,7 +16,7 @@ spec:
       paths:
       - backend:
           service:
-            name: vcluster
+            name: vcluster-test
             port: 
               number: 443
         path: /
