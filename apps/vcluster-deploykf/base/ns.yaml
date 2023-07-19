@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: vcluster-deploykf
+  labels:
+    kubernetes.io/metadata.name: vcluster-deploykf
+    istio-injection: enabled
+spec:
+  finalizers:
+  - kubernetes
