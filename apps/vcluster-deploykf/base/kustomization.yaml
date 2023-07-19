@@ -16,3 +16,5 @@ helmCharts:
           - --tls-san=deploykf.cluster.sciops.net
           - --out-kube-config-server=https://deploykf.cluster.sciops.net
         kubeConfigContextName: "vcluster"
+      storage:
+        persistence: false
