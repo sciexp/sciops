@@ -17,8 +17,4 @@ helmCharts:
           - --out-kube-config-server="https://deploykf.cluster.sciops.net"
         kubeConfigContextName: "vcluster"
       storage:
-        persistence: false
-      ingress:
-        enabled: true
-        ingressClassName: "nginx"
-        host: "deploykf.cluster.sciops.net"
+        persistence: true
