@@ -13,5 +13,5 @@ helmCharts:
         type: ClusterIP
       syncer:
         extraArgs:
-        - --tls-san=deploykf.cluster.sciops.net
+        - --tls-san=cluster.sciops.net
         - --out-kube-config-server=https://deploykf.cluster.sciops.net
