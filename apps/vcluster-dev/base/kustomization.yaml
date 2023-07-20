@@ -11,8 +11,8 @@ helmCharts:
       fullnameOverride: vcluster
       syncer:
         extraArgs:
-          - --tls-san="dev.cluster.sciops.net"
-          - --out-kube-config-server="https://dev.cluster.sciops.net"
+          - --tls-san="dev.k.cluster.sciops.net"
+          - --out-kube-config-server="https://dev.k.cluster.sciops.net"
         kubeConfigContextName: "vcluster-dev"
       storage:
         persistence: true

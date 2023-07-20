@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: nginx 
   rules:
-  - host: "dev.cluster.sciops.net"
+  - host: "dev.k.cluster.sciops.net"
     http:
       paths:
       - backend:
