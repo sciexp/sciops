@@ -25,6 +25,7 @@ spec:
       tls:
         httpsRedirect: true
       hosts:
+        - "prometheus.cluster.sciops.net"
         - "kiali.cluster.sciops.net"
         - "jaeger.cluster.sciops.net"
         - "dex.cluster.sciops.net"
@@ -41,6 +42,7 @@ spec:
         mode: SIMPLE
         credentialName: cluster.sciops.net # This should match the Certificate secretName
       hosts:
+        - "prometheus.cluster.sciops.net"
         - "kiali.cluster.sciops.net"
         - "jaeger.cluster.sciops.net"
         - "dex.cluster.sciops.net"
