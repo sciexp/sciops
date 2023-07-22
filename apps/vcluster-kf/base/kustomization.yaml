@@ -20,5 +20,3 @@ helmCharts:
       sync:
         hoststorageclasses:
           enabled: true
-        persistentvolumes:
-          enabled: true
