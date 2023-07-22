@@ -18,5 +18,7 @@ helmCharts:
         persistence: true
       fallbackHostDns: true
       sync:
+        hoststorageclasses:
+          enabled: true
         persistentvolumes:
           enabled: true
