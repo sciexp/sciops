@@ -29,3 +29,6 @@ helmCharts:
           type: gcs
         gateway:
           enabled: false
+      memberlist:
+        service:
+          publishNotReadyAddresses: true
