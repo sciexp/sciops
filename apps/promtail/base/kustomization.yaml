@@ -11,4 +11,8 @@ helmCharts:
       fullnameOverride: promtail
       config:
         clients:
-          - url: http://loki-gateway.monitoring/loki/api/v1/push
+          - url: http://loki-gateway.monitoring.svc.cluster.local/loki/api/v1/push
+      loki:
+        serviceName: ""
+      daemonset:
+        enabled: true
