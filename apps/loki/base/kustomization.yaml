@@ -22,13 +22,25 @@ helmCharts:
         distributorLabels:
           app: loki
         storageConfig:
-          aws:
-            s3: false  
+          # aws:
+          #   s3: false  
+          type: gcs
           gcs:
             bucketnames: $(datadir .Values.global.lokiGcsBucket)
-          type: gcs
         gateway:
           enabled: false
       memberlist:
         service:
           publishNotReadyAddresses: true
+      write:
+        persistence:
+          enableStatefulSetAutoDeletePVC: false
+      read:
+        persistence:
+          enableStatefulSetAutoDeletePVC: false
+      backend:
+        persistence:
+          enableStatefulSetAutoDeletePVC: false
+      singleBinary:
+        persistence:
+          enableStatefulSetAutoDeletePVC: false
