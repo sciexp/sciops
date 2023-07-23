@@ -19,6 +19,7 @@ helmCharts:
           name: loki-gcs-bucket
           key: bucket_name
       loki:
+        # clusterDomain: ""
         distributorLabels:
           app: loki
         storageConfig:
@@ -29,8 +30,36 @@ helmCharts:
             bucketnames: $(datadir .Values.global.lokiGcsBucket)
         gateway:
           enabled: false
+      queryFrontend:
+        service:
+          ports:
+            grpc:
+              name: grpclb
+              appProtocol: tcp
+      querier:
+        service:
+          ports:
+            grpc:
+              appProtocol: tcp
+      ingester:
+        enabled: true
+        service:
+          type: ClusterIP
+          headless:
+            enabled: true
+          ports:
+            grpc:
+              appProtocol: tcp
+      distributor:  
+        service:
+          ports:
+            grpc:
+              appProtocol: tcp
       memberlist:
         service:
+          ports:
+            http: 
+              appProtocol: tcp
           publishNotReadyAddresses: true
       write:
         persistence:
@@ -41,6 +70,6 @@ helmCharts:
       backend:
         persistence:
           enableStatefulSetAutoDeletePVC: false
-      singleBinary:
-        persistence:
-          enableStatefulSetAutoDeletePVC: false
+      # singleBinary:
+      #   persistence:
+      #     enableStatefulSetAutoDeletePVC: false
