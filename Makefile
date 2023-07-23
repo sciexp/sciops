@@ -137,7 +137,13 @@ k8s_summary: ## Get a comprehensive summary of k8s resources. Check make -n k8s_
 	$(call k8s_summary_func,"Fetching persistent volumes",get pv)
 	$(call k8s_summary_func,"Fetching persistent volume claims",get pvc -A)
 
-anonymize-env: # anonymize .envrc file
+ephemeral_debug: ## Create ephemeral debug pod.
+ifndef PODNAME
+	$(error PODNAME is not set)
+endif
+	kubectl debug -it $(PODNAME) --image=nicolaka/netshoot -- sh
+
+anonymize-env: # Anonymize .envrc file
 	@echo "Anonymizing .envrc file..."
 	@/bin/bash -c "\
 	source_file='.envrc'; \
