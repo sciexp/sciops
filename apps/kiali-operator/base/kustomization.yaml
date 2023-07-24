@@ -32,27 +32,24 @@ helmCharts:
                   - app_label: istio-ingressgateway
                     is_core: true
                     is_proxy: true
-                    # default: namespace is undefined
                     namespace: istio-system
                 enabled: true
               config_map_name: "istio"
               envoy_admin_local_port: 15000
               gateway_api_class_name: ""
             prometheus:
-              url: http://prometheus-server.monitoring
+              url: http://prometheus-server.monitoring.svc.cluster.local
             grafana:
               auth:
                 type: bearer
                 token: secret:kiali:grafanaToken
               enabled: true
-              in_cluster_url: http://grafana.monitoring
+              in_cluster_url: http://grafana.monitoring.svc.cluster.local
               url: https://grafana.cluster.sciops.net
             tracing:
               enabled: true
-              # Private facing URL of Jaeger
               in_cluster_url: "http://jaeger-query.observability.svc.cluster.local:16686"
               use_grpc: false
-              # Public facing URL of Jaeger
               url: "https://jaeger.cluster.sciops.net/jaeger"
           auth:
             strategy: openid
