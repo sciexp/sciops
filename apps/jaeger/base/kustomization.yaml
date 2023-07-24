@@ -25,17 +25,23 @@ helmCharts:
     repo: https://jaegertracing.github.io/helm-charts
     namespace: observability
     valuesInline:
-      commonLabels:
-        app: jaeger
-        version: 1.45.0
-      cassandra:
-        enabled: true
-        cassandraCreateSchema:
-          enabled: false 
-        dbUser:
-          existingSecret: jaeger-cassandra
+      # commonLabels:
+      #   app: jaeger
+      #   version: 1.45.0
+      provisionDataStore:
+        cassandra: false
+        elasticsearch: true
+        kafka: false
+      storage:
+        type: elasticsearch
+      # cassandra:
+      #   enabled: true
+      #   cassandraCreateSchema:
+      #     enabled: false 
+      #   dbUser:
+      #     existingSecret: jaeger-cassandra
       query:
-        extraEnvVars:
+        extraEnv:
           - name: METRICS_STORAGE_TYPE
             value: prometheus
           - name: PROMETHEUS_SERVER_URL
