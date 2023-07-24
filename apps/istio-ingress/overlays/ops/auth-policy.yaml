@@ -12,7 +12,14 @@ spec:
     - to:
         - operation:
             hosts:
-              - "*.cluster.sciops.net"
+              # - "*.cluster.sciops.net"
+              - "prometheus.cluster.sciops.net"
+              - "kiali.cluster.sciops.net"
+              - "jaeger.cluster.sciops.net"
+              - "dex.cluster.sciops.net"
+              - "argocd.cluster.sciops.net"
+              - "grafana.cluster.sciops.net"
+              - "cluster.sciops.net"
       when:
         - key: request.headers[x-envoy-external-address]
           values:
@@ -20,10 +27,8 @@ spec:
     - to:
         - operation:
             hosts:
-              - "homepage.cluster.sciops.net" # Homepage
-              - "cluster.sciops.net" # Homepage
-              - "www.cluster.sciops.net" # Homepage
-              # - "argocd.cluster.sciops.net" # github repository badge
+              - "cluster.sciops.net" # homepage
               - "dex.cluster.sciops.net" # dex
-              # - "grafana.cluster.sciops.net" # grafana/backstage
+              # - "argocd.cluster.sciops.net" # github repository badge
+              # - "grafana.cluster.sciops.net" # grafana
               # - "sonar.cluster.sciops.net" # github pipelines
