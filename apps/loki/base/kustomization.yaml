@@ -1,76 +1,64 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: monitoring
-resources:
-- loki-gcs-bucket.yaml
+# resources:
+# - loki-gcs-bucket.yaml
 helmCharts:
-  - name: loki
+  - name: loki-distributed
     includeCRDs: true
     releaseName: loki
     namespace: monitoring
-    version: 5.8.11
+    version: 0.70.0
     repo: https://grafana.github.io/helm-charts
     valuesInline:
       nameOverride: loki
       labels:
         app: loki
-      global:
-        lokiGcsBucket: 
-          name: loki-gcs-bucket
-          key: bucket_name
-      loki:
+      global: {}
+        # lokiGcsBucket: 
+        #   name: loki-gcs-bucket
+        #   key: bucket_name
         # clusterDomain: ""
-        auth_enabled: false
-        distributorLabels:
-          app: loki
-        storageConfig:
-          # aws:
-          #   s3: false  
-          type: gcs
-          gcs:
-            bucketnames: $(datadir .Values.global.lokiGcsBucket)
-        gateway:
-          enabled: false
+      loki:
+        appProtocol: tcp
+        # auth_enabled: false
+        # distributorLabels:
+        #   app: loki
+        # storageConfig:
+        #   type: gcs
+        #   gcs:
+        #     bucketnames: $(datadir .Values.global.lokiGcsBucket)
+      # gateway:
+      #   enabled: false
       queryFrontend:
-        service:
-          ports:
-            grpc:
-              name: grpclb
-              appProtocol: tcp
+        appProtocol:
+          grpc: tcp
       querier:
-        service:
-          ports:
-            grpc:
-              appProtocol: tcp
+        appProtocol:
+          grpc: tcp
       ingester:
-        enabled: true
-        service:
-          type: ClusterIP
-          headless:
-            enabled: true
-          ports:
-            grpc:
-              appProtocol: tcp
+        appProtocol:
+          grpc: tcp
       distributor:  
-        service:
-          ports:
-            grpc:
-              appProtocol: tcp
-      memberlist:
-        service:
-          ports:
-            http: 
-              appProtocol: tcp
-          publishNotReadyAddresses: true
-      write:
-        persistence:
-          enableStatefulSetAutoDeletePVC: false
-      read:
-        persistence:
-          enableStatefulSetAutoDeletePVC: false
-      backend:
-        persistence:
-          enableStatefulSetAutoDeletePVC: false
+        appProtocol:
+          grpc: tcp
+      # gateway:
+      #   enabled: false
+      # memberlist:
+      #   service:
+      #     ports:
+      #       http: 
+      #         appProtocol: tcp
+      #     publishNotReadyAddresses: true
+      # write:
+      #   persistence:
+      #     enableStatefulSetAutoDeletePVC: false
+      # read:
+      #   persistence:
+      #     enableStatefulSetAutoDeletePVC: false
+      # backend:
+      #   persistence:
+      #     enableStatefulSetAutoDeletePVC: false
       # singleBinary:
       #   persistence:
       #     enableStatefulSetAutoDeletePVC: false
