@@ -34,6 +34,10 @@ helmCharts:
         kafka: false
       storage:
         type: elasticsearch
+      collector:
+        service:
+          zipkin:
+            port: 9411
       # cassandra:
       #   enabled: true
       #   cassandraCreateSchema:
