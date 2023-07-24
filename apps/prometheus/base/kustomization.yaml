@@ -15,7 +15,7 @@ helmCharts:
           - scheme: http
             static_configs:
               - targets:
-                  - "prometheus-alertmanager.monitoring:9093"
+                  - "prometheus-alertmanager.monitoring.svc.cluster.local:9093"
         resources:
           limits:
             cpu: 1
@@ -1420,19 +1420,19 @@ helmCharts:
               scrape_interval: 5s
               static_configs:
                 - targets:
-                    - prometheus-server:80
+                    - prometheus-server.monitoring.svc.cluster.local:80
 
             - job_name: "alertmanager"
               scrape_interval: 10s
               honor_labels: true
               static_configs:
-                - targets: ["prometheus-alertmanager:9093"]
+                - targets: ["prometheus-alertmanager.monitoring.svc.cluster.local:9093"]
 
             - job_name: "grafana"
               scrape_interval: 10s
               honor_labels: true
               static_configs:
-                - targets: ["grafana:80"]
+                - targets: ["grafana.monitoring.svc.cluster.local:80"]
 
             - job_name: "node-exporter"
               kubernetes_sd_configs:
@@ -1522,7 +1522,7 @@ helmCharts:
               scheme: http
               static_configs:
                 - targets:
-                    - kube-state-metrics.kube-system:8080
+                    - kube-state-metrics.kube-system.svc.cluster.local:8080
 
             - job_name: "kubernetes-cadvisor"
               scheme: https
@@ -1603,7 +1603,7 @@ helmCharts:
 
             - job_name: node
               static_configs:
-                - targets: ["prometheus-prometheus-node-exporter:9100"]
+                - targets: ["prometheus-prometheus-node-exporter.monitoring.svc.cluster.local:9100"]
 
             # - job_name: "teste-loki"
             #   scrape_interval: 60s
@@ -1616,7 +1616,7 @@ helmCharts:
               scrape_interval: 15s
               static_configs:
                 - targets:
-                    - jaeger--agent.observability.svc.cluster.local:14271
+                    - jaeger-agent.observability.svc.cluster.local:14271
                     - jaeger-collector.observability.svc.cluster.local:14269
                     - jaeger-query.observability.svc.cluster.local:16687
 
@@ -1626,11 +1626,11 @@ helmCharts:
             #     - targets:
             #         - sonarqube-jmx-metrics.sonarqube.svc.cluster.local:10443
 
-            - job_name: "otel-collector"
-              scrape_interval: 10s
-              static_configs:
-                - targets:
-                    - otel-collector.observability.svc.cluster.local:8889
+            # - job_name: "otel-collector"
+            #   scrape_interval: 10s
+            #   static_configs:
+            #     - targets:
+            #         - otel-collector.observability.svc.cluster.local:8889
 
             - job_name: "cert-manager"
               metrics_path: /metrics
