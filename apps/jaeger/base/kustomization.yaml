@@ -21,13 +21,13 @@ helmCharts:
 
   - name: jaeger
     releaseName: jaeger
-    version: 1.2.5
-    repo: https://charts.bitnami.com/bitnami
+    version: 0.71.10
+    repo: https://jaegertracing.github.io/helm-charts
     namespace: observability
     valuesInline:
       commonLabels:
         app: jaeger
-        version: 1.46.0
+        version: 1.45.0
       cassandra:
         enabled: true
         # clusterDomain: cluster.local # defaults to cluster.local
