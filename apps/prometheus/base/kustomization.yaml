@@ -1626,11 +1626,11 @@ helmCharts:
             #     - targets:
             #         - sonarqube-jmx-metrics.sonarqube.svc.cluster.local:10443
 
-            # - job_name: "otel-collector"
-            #   scrape_interval: 10s
-            #   static_configs:
-            #     - targets:
-            #         - otel-collector.observability.svc.cluster.local:8889
+            - job_name: "otel-collector"
+              scrape_interval: 10s
+              static_configs:
+                - targets:
+                    - otel-collector.observability.svc.cluster.local:8889
 
             - job_name: "cert-manager"
               metrics_path: /metrics
