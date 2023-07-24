@@ -20,6 +20,7 @@ helmCharts:
           key: bucket_name
       loki:
         # clusterDomain: ""
+        auth_enabled: false
         distributorLabels:
           app: loki
         storageConfig:

@@ -12,6 +12,7 @@ helmCharts:
       config:
         clients:
           - url: http://loki-gateway.monitoring.svc.cluster.local/loki/api/v1/push
+            # tenant_id: default # required if loki is run in multi-tenant mode
       loki:
         serviceName: ""
       daemonset:
