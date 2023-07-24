@@ -1,6 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: observability
+resources:
+  - ns.yaml
 commonLabels:
   app: jaeger-operator
   version: 2.46.2
@@ -28,7 +30,7 @@ helmCharts:
         version: 1.46.0
       cassandra:
         enabled: true
-        # clusterDomain: cluster.local # Just need if cluster is different of cluster.local
+        # clusterDomain: cluster.local # defaults to cluster.local
         dbUser:
           existingSecret: jaeger-cassandra
       query:
@@ -36,6 +38,6 @@ helmCharts:
           - name: METRICS_STORAGE_TYPE
             value: prometheus
           - name: PROMETHEUS_SERVER_URL
-            value: http://prometheus-server.monitoring
+            value: http://prometheus-server.monitoring.svc.cluster.local
           - name: PROMETHEUS_QUERY_SUPPORT_SPANMETRICS_CONNECTOR
             value: "true"
