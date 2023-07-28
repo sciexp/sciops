@@ -4,11 +4,11 @@ namespace: vcluster-kf2
 helmCharts:
   - name: vcluster
     includeCRDs: true
-    releaseName: vcluster
+    releaseName: vcluster-kf2
     version: 0.15.2
     repo: https://charts.loft.sh
     valuesInline:
-      fullnameOverride: vcluster
+      fullnameOverride: vcluster-kf2
       syncer:
         extraArgs:
           - --tls-san="kf2.k.cluster.sciops.net"
