@@ -17,6 +17,6 @@ spec:
             - "kf2.k.cluster.sciops.net"
       route:
         - destination:
-            host: vcluster.vcluster-kf2.svc.cluster.local
+            host: vcluster-kf2.vcluster-kf2.svc.cluster.local
             port:
               number: 443
