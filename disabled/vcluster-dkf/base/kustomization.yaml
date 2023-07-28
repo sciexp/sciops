@@ -1,6 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: vcluster-kf2
+namespace: vcluster-dkf
 helmCharts:
   - name: vcluster
     includeCRDs: true
@@ -11,9 +11,9 @@ helmCharts:
       fullnameOverride: vcluster
       syncer:
         extraArgs:
-          - --tls-san="kf2.k.cluster.sciops.net"
-          - --out-kube-config-server="https://kf2.k.cluster.sciops.net"
-        kubeConfigContextName: "vcluster-kf2"
+          - --tls-san="dkf.k.cluster.sciops.net"
+          - --out-kube-config-server="https://dkf.k.cluster.sciops.net"
+        kubeConfigContextName: "vcluster-dkf"
       storage:
         persistence: true
       fallbackHostDns: true

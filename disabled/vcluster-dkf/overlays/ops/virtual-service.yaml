@@ -3,20 +3,20 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: vcluster
-  namespace: vcluster-kf2
+  namespace: vcluster-dkf
   annotations:
-    link.argocd.argoproj.io/external-link: https://kf2.k.cluster.sciops.net
+    link.argocd.argoproj.io/external-link: https://dkf.k.cluster.sciops.net
 spec:
   hosts:
-    - "kf2.k.cluster.sciops.net"
+    - "dkf.k.cluster.sciops.net"
   gateways:
     - istio-system/istio-ingressgateway
   tls:
     - match:
         - sniHosts:
-            - "kf2.k.cluster.sciops.net"
+            - "dkf.k.cluster.sciops.net"
       route:
         - destination:
-            host: vcluster.vcluster-kf2.svc.cluster.local
+            host: vcluster.vcluster-dkf.svc.cluster.local
             port:
               number: 443

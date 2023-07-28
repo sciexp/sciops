@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: vcluster-kf2
+  name: vcluster-dkf
   labels:
-    kubernetes.io/metadata.name: vcluster-kf2
+    kubernetes.io/metadata.name: vcluster-dkf
     istio-injection: enabled
 spec:
   finalizers:
