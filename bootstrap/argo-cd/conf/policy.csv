@@ -23,8 +23,5 @@ g, sciops:dev, role:dev-team
 # Backstage user permissions
 g, backstage, role:org-admin
 
-# Assign admin user to org-admin role
+p, role:admin, *, *, *, allow
 g, admin, role:admin
-
-# Assign API key generation permissions to admin
-p, role:admin, account, update, admin, allow
