@@ -31,7 +31,7 @@ configMapGenerator:
     files:
       - conf/policy.csv
     literals:
-      - policy.default="role:org-admin"
+      - policy.default="role:admin"
     name: argocd-rbac-cm
     options:
       labels:
