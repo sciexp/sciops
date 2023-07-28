@@ -3,20 +3,20 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: vcluster
-  namespace: vcluster-ora
+  namespace: vcluster-kf2
   annotations:
-    link.argocd.argoproj.io/external-link: https://ora.k.cluster.sciops.net
+    link.argocd.argoproj.io/external-link: https://kf2.k.cluster.sciops.net
 spec:
   hosts:
-    - "ora.k.cluster.sciops.net"
+    - "kf2.k.cluster.sciops.net"
   gateways:
     - istio-system/istio-ingressgateway
   tls:
     - match:
         - sniHosts:
-            - "ora.k.cluster.sciops.net"
+            - "kf2.k.cluster.sciops.net"
       route:
         - destination:
-            host: vcluster.vcluster-ora.svc.cluster.local
+            host: vcluster.vcluster-kf2.svc.cluster.local
             port:
               number: 443

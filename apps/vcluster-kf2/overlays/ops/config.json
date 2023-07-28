@@ -1,9 +1,9 @@
 {
-  "appName": "vcluster-ora",
-  "userGivenName": "vcluster-ora",
-  "destNamespace": "vcluster-ora",
+  "appName": "vcluster-kf2",
+  "userGivenName": "vcluster-kf2",
+  "destNamespace": "vcluster-kf2",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "apps/vcluster-ora/overlays/ops",
+  "srcPath": "apps/vcluster-kf2/overlays/ops",
   "srcRepoURL": "https://github.com/scientistexperience/test-cluster-ops.git",
   "srcTargetRevision": "",
   "CreateNamespace": true,

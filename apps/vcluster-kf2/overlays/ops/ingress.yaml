@@ -7,11 +7,11 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
   name: vcluster-ingress
-  namespace: vcluster-ora
+  namespace: vcluster-kf2
 spec:
   ingressClassName: nginx 
   rules:
-  - host: "ora.k.cluster.sciops.net"
+  - host: "kf2.k.cluster.sciops.net"
     http:
       paths:
       - backend:
