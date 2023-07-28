@@ -4,11 +4,11 @@ namespace: vcluster-dev
 helmCharts:
   - name: vcluster
     includeCRDs: true
-    releaseName: vcluster
+    releaseName: vcluster-dev
     version: 0.15.2
     repo: https://charts.loft.sh
     valuesInline:
-      fullnameOverride: vcluster
+      fullnameOverride: vcluster-dev
       syncer:
         extraArgs:
           - --tls-san="dev.k.cluster.sciops.net"

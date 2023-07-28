@@ -17,6 +17,6 @@ spec:
             - "dev.k.cluster.sciops.net"
       route:
         - destination:
-            host: vcluster.vcluster-dev.svc.cluster.local
+            host: vcluster-dev.vcluster-dev.svc.cluster.local
             port:
               number: 443
