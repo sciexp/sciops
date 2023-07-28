@@ -23,6 +23,18 @@ g, sciops:dev, role:dev-team
 # Backstage user permissions
 g, backstage, role:org-admin
 
+# default
+# https://github.com/argoproj/argo-cd/blob/
+# 74a07f19c134f7475dbf131fc9453e9692c472cf/assets/builtin-policy.csv
+p, role:readonly, applications, get, */*, allow
+p, role:readonly, certificates, get, *, allow
+p, role:readonly, clusters, get, *, allow
+p, role:readonly, repositories, get, *, allow
+p, role:readonly, projects, get, *, allow
+p, role:readonly, accounts, get, *, allow
+p, role:readonly, gpgkeys, get, *, allow
+p, role:readonly, logs, get, */*, allow
+
 p, role:admin, applications, create, */*, allow
 p, role:admin, applications, update, */*, allow
 p, role:admin, applications, delete, */*, allow
