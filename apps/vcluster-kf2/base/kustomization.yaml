@@ -17,9 +17,9 @@ helmCharts:
       storage:
         persistence: true
       fallbackHostDns: true
-      sync: {}
-        # hoststorageclasses:
-        #   enabled: true
+      sync:
+        hoststorageclasses:
+          enabled: true
       plugin:
         cert-manager-plugin:
           image: ghcr.io/loft-sh/vcluster-plugins/cert-manager-plugin:0.3.0
