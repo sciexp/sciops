@@ -1,0 +1,11 @@
+{
+  "appName": "sealed-secrets",
+  "userGivenName": "sealed-secrets",
+  "destNamespace": "kube-system",
+  "destServer": "https://vcluster-kf2.vcluster-kf2.svc.cluster.local",
+  "srcPath": "apps/sealed-secrets/overlays/kf2",
+  "srcRepoURL": "https://github.com/scientistexperience/test-cluster-ops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
