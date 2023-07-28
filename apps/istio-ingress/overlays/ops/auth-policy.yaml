@@ -29,6 +29,6 @@ spec:
             hosts:
               - "cluster.sciops.net" # homepage
               - "dex.cluster.sciops.net" # dex
-              # - "argocd.cluster.sciops.net" # github repository badge
+              - "argocd.cluster.sciops.net" # github repository badge
               # - "grafana.cluster.sciops.net" # grafana
               # - "sonar.cluster.sciops.net" # github pipelines
