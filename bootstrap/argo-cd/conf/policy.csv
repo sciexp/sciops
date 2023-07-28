@@ -24,4 +24,4 @@ g, sciops:dev, role:dev-team
 g, backstage, role:org-admin
 
 # Assign admin user to org-admin role
-g, admin, role:org-admin
+u, admin, role:org-admin
