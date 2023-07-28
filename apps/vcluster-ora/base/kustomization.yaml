@@ -20,5 +20,3 @@ helmCharts:
       sync:
         storageclasses:
           enabled: false
-        hoststorageclasses:
-          enabled: true
