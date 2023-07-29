@@ -16,10 +16,10 @@ spec:
               - "prometheus.cluster.sciops.net"
               - "kiali.cluster.sciops.net"
               - "jaeger.cluster.sciops.net"
-              - "dex.cluster.sciops.net"
-              - "argocd.cluster.sciops.net"
+              # - "dex.cluster.sciops.net"
+              # - "argocd.cluster.sciops.net"
               - "grafana.cluster.sciops.net"
-              - "cluster.sciops.net"
+              # - "cluster.sciops.net"
       when:
         - key: request.headers[x-envoy-external-address]
           values:
