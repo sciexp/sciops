@@ -47,7 +47,19 @@ uninstall_argocd: ## Uninstall argocd-autopilot installation of argocd.
 
 forward_argocd: ## Forward argocd server port to localhost.
 	kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
-	kubectl port-forward svc/argocd-server -n argocd 8080:80
+	kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+login_argocd: ## Login to argocd
+	argocd login argocd.cluster.sciops.net \
+	--username admin \
+	--password $(ARGOCD_PASSWORD) \
+	--insecure
+
+list_argocd_projects: ## List argocd projects.
+	argocd-autopilot project list \
+	--provider github \
+	--git-token $(GH_PAT) \
+	--repo https://github.com/$(GH_OPS_REPO)
 
 create_ops_project: ## Create argocd project to be used for ops applications.
 	argocd-autopilot project create ops \
@@ -55,15 +67,19 @@ create_ops_project: ## Create argocd project to be used for ops applications.
 	--git-token $(GH_PAT) \
 	--repo https://github.com/$(GH_OPS_REPO)
 
-create_kf_project: ## Create argocd project to be used for kubeflow applications.
-	argocd-autopilot project create kf \
+create_new_project: ## Create argocd project to be used for kubeflow applications.
+	argocd-autopilot project create $(PROJECT_NAME) \
 	--provider github \
 	--git-token $(GH_PAT) \
 	--repo https://github.com/$(GH_OPS_REPO) \
 	--dest-kube-context $(KUBEFLOW_VCLUSTER_CONTEXT) \
-	--port-forward \
-	--port-forward-namespace argocd \
-	--dry-run
+	--server $(ARGOCD_SERVER_URL))
+
+delete_argocd_project: ## Delete argocd project: make delete_argocd_project PROJECT_NAME=""
+	argocd-autopilot project delete $(PROJECT_NAME) \
+	--provider github \
+	--git-token $(GH_PAT) \
+	--repo https://github.com/$(GH_OPS_REPO)
 
 install_cert_manager: ## Install cert-manager.
 	argocd-autopilot app create cert-manager \
