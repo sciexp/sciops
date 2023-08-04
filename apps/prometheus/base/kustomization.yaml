@@ -12,7 +12,7 @@ helmCharts:
         enabled: false
       server:
         extraArgs:
-          web.enable-lifecycle: false
+          web.enable-lifecycle: true
         alertmanagers:
           - scheme: http
             static_configs:
