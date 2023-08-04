@@ -11,6 +11,8 @@ helmCharts:
       kube-state-metrics:
         enabled: false
       server:
+        extraArgs:
+          web.enable-lifecycle: false
         alertmanagers:
           - scheme: http
             static_configs:
