@@ -17,3 +17,6 @@ helmCharts:
       storage:
         persistence: true
       fallbackHostDns: true
+      sync:
+        hoststorageclasses:
+          enabled: true
