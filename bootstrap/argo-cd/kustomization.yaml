@@ -15,7 +15,6 @@ configMapGenerator:
       - server.insecure="true"
     name: argocd-cmd-params-cm
   - name: argocd-deploykf-plugin
-    behavior: merge
     files:
       - deploykf-plugin/plugin.yaml
   - behavior: merge
