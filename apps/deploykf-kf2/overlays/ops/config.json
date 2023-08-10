@@ -1,0 +1,11 @@
+{
+  "appName": "deploykf-kf2",
+  "userGivenName": "deploykf-kf2",
+  "destNamespace": "deploykf-kf2",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/deploykf-kf2/overlays/ops",
+  "srcRepoURL": "https://github.com/scientistexperience/test-cluster-ops.git",
+  "srcTargetRevision": "",
+  "CreateNamespace": true,
+  "labels": null
+}
