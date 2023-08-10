@@ -37,9 +37,8 @@ spec:
         
         ## a string containing the contents of a values file
         ##
-        - name: "values"
-          string: |
-            ""
+        # - name: "values"
+        #   string: |
 
   destination:
     server: "https://kubernetes.default.svc"
