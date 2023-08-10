@@ -3,20 +3,20 @@ kind: Kustomization
 namespace: argocd
 resources:
   - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.15
-  - deploykf-plugin/assets-pvc.yaml
+  # - deploykf-plugin/assets-pvc.yaml
   - virtual-service.yaml
   - secrets.yaml
 patches:
   - path: argocd-server.yaml
-  - path: deploykf-plugin/repo-server-patch.yaml
+  # - path: deploykf-plugin/repo-server-patch.yaml
 configMapGenerator:
   - behavior: merge
     literals:
       - server.insecure="true"
     name: argocd-cmd-params-cm
-  - name: argocd-deploykf-plugin
-    files:
-      - deploykf-plugin/plugin.yaml
+  # - name: argocd-deploykf-plugin
+  #   files:
+  #     - deploykf-plugin/plugin.yaml
   - behavior: merge
     files:
       - conf/dex.config
