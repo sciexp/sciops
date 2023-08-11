@@ -5,7 +5,7 @@ helmCharts:
   - name: vcluster
     includeCRDs: true
     releaseName: vcluster-kf2
-    version: 0.15.2
+    version: 0.15.5
     repo: https://charts.loft.sh
     valuesInline:
       fullnameOverride: vcluster-kf2
