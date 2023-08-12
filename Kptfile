@@ -1,0 +1,13 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata:
+  name: test-cluster-ops
+info:
+  emails:
+    - scientistexperience@gmail.com
+  description: This is a test package for an ops cluster.
+pipeline:
+  validators:
+    - image: gcr.io/kpt-fn/kubeval:v0.3
+      configMap:
+        strict: "true"
