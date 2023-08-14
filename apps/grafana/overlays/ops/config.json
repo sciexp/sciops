@@ -4,7 +4,7 @@
   "destNamespace": "monitoring",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/grafana/overlays/ops",
-  "srcRepoURL": "https://github.com/scientistexperience/test-cluster-ops.git",
+  "srcRepoURL": "https://github.com/$GH_OPS_REPO.git",
   "srcTargetRevision": "",
   "CreateNamespace": true,
   "labels": null
