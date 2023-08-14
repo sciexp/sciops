@@ -22,7 +22,6 @@ spec:
   sourceRepos:
   - '*'
 status: {}
-
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
@@ -37,7 +36,7 @@ spec:
   - git:
       files:
       - path: apps/**/ops/config.json
-      repoURL: https://github.com/scientistexperience/test-cluster-ops.git
+      repoURL: https://github.com/unset-orgname/sciops.git # kpt-set: https://github.com/${github_ops_repo}.git
       requeueAfterSeconds: 20
       revision: ""
       template:
@@ -50,7 +49,7 @@ spec:
   - git:
       files:
       - path: apps/**/ops/config_dir.json
-      repoURL: https://github.com/scientistexperience/test-cluster-ops.git
+      repoURL: https://github.com/unset-orgname/sciops.git # kpt-set: https://github.com/${github_ops_repo}.git
       requeueAfterSeconds: 20
       revision: ""
       template:
@@ -93,5 +92,5 @@ spec:
           prune: true
           selfHeal: true
         syncOptions:
-          - CreateNamespace={{ CreateNamespace }}
+        - CreateNamespace={{ CreateNamespace }}
 status: {}

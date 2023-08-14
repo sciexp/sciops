@@ -22,7 +22,6 @@ spec:
   sourceRepos:
   - '*'
 status: {}
-
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
@@ -37,7 +36,7 @@ spec:
   - git:
       files:
       - path: apps/**/prd/config.json
-      repoURL: https://github.com/scientistexperience/test-cluster-ops.git
+      repoURL: https://github.com/unset-orgname/sciops.git # kpt-set: https://github.com/${github_ops_repo}.git
       requeueAfterSeconds: 20
       revision: ""
       template:
@@ -50,7 +49,7 @@ spec:
   - git:
       files:
       - path: apps/**/prd/config_dir.json
-      repoURL: https://github.com/scientistexperience/test-cluster-ops.git
+      repoURL: https://github.com/unset-orgname/sciops.git # kpt-set: https://github.com/${github_ops_repo}.git
       requeueAfterSeconds: 20
       revision: ""
       template:
@@ -78,14 +77,14 @@ spec:
         namespace: '{{ destNamespace }}'
         server: '{{ destServer }}'
       ignoreDifferences:
-        - group: argoproj.io
-          kind: Application
-          jsonPointers:
-            - /status
-        - group: networking.istio.io
-          kind: VirtualService
-          jsonPointers:
-            - /spec/http/0
+      - group: argoproj.io
+        kind: Application
+        jsonPointers:
+        - /status
+      - group: networking.istio.io
+        kind: VirtualService
+        jsonPointers:
+        - /spec/http/0
       project: prd
       source:
         path: '{{ srcPath }}'
@@ -97,5 +96,5 @@ spec:
           prune: true
           selfHeal: true
         syncOptions:
-          - CreateNamespace=true
+        - CreateNamespace=true
 status: {}
