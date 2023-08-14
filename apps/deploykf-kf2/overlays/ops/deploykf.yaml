@@ -13,33 +13,28 @@ spec:
     ##  - note, this does NOT need to be the deployKF repository, we are only using it
     ##    to access the './sample-values.yaml' file for the `values_files` parameter
     ##
-    repoURL: "https://github.com/scientistexperience/test-cluster-ops.git"
+    repoURL: "https://github.com/unset-orgname/sciops.git" # kpt-set: https://github.com/${github_ops_repo}.git
     targetRevision: "main"
     path: "./apps/deploykf-kf2"
-
     ## plugin configuration
     ##
     plugin:
       name: "deploykf"
       parameters:
-
         ## the deployKF generator version
         ##  - available versions: https://github.com/deployKF/deployKF/releases
         ##
         - name: "source_version"
           string: "0.1.1"
-          
         ## paths to values files within the `repoURL` repository
         ##
         - name: "values_files"
           array:
             - "./overlays/ops/values.yaml"
-        
-        ## a string containing the contents of a values file
-        ##
-        # - name: "values"
-        #   string: |
-
+            ## a string containing the contents of a values file
+            ##
+            # - name: "values"
+            #   string: |
   destination:
     server: "https://kubernetes.default.svc"
     namespace: "argocd"

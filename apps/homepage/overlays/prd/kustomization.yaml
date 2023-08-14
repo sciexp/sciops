@@ -22,4 +22,4 @@ helmCharts:
         main:
           enabled: false
           hosts:
-            - host: cluster.sciops.net
+            - host: unset-127-0-0-1.nip.io # kpt-set: ${host}

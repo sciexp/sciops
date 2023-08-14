@@ -3,7 +3,7 @@ kind: ClusterIssuer
 metadata:
   labels:
     app.kubernetes.io/instance: certs
-  name: cluster.sciops.net
+  name: unset-127-0-0-1.nip.io # kpt-set: ${host}
 spec:
   acme:
     email: user@email.com # kpt-set: ${cluster_issuer_email}

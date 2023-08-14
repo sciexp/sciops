@@ -18,7 +18,7 @@ helmCharts:
           memory: 256Mi
       grafana.ini:
         server:
-          domain: grafana.cluster.sciops.net
+          domain: grafana.unset-127-0-0-1.nip.io # kpt-set: grafana.${host}
       admin:
         existingSecret: "grafana-secrets"
         userKey: GF_SECURITY_ADMIN_USER
@@ -36,14 +36,13 @@ helmCharts:
             name: grafana-secrets
             key: GF_AUTH_GITHUB_CLIENT_SECRET
       env:
-        GF_SERVER_DOMAIN: grafana.cluster.sciops.net
-        GF_SERVER_ROOT_URL: "https://grafana.cluster.sciops.net"
+        GF_SERVER_DOMAIN: grafana.unset-127-0-0-1.nip.io # kpt-set: grafana.${host}
+        GF_SERVER_ROOT_URL: "https://grafana.unset-127-0-0-1.nip.io" # kpt-set: https://grafana.${host}
         GF_AUTH_GITHUB_ENABLED: true
         GF_AUTH_GITHUB_ALLOW_SIGN_UP: true
         GF_AUTH_GITHUB_SCOPES: "user:email,read:org"
         GF_AUTH_GITHUB_ALLOWED_ORGANIZATIONS: UNSET_ORG # kpt-set: ${github_org}
         GF_AUTO_ASSIGN_ORG_ROLE: Admin
-
       datasources:
         datasources.yaml:
           apiVersion: 1
@@ -90,7 +89,6 @@ helmCharts:
               settings:
                 url: http://prometheus-alertmanager
           delete_notifiers: []
-
       sidecar:
         plugins:
           enabled: true
@@ -101,7 +99,7 @@ helmCharts:
           label: grafana_dashboard
           labelValue: "1"
           folder: /var/lib/grafana/dashboards/external
-          folderAnnotation: grafana.cluster.sciops.net/dashboard-folder
+          folderAnnotation: grafana.unset-127-0-0-1.nip.io/dashboard-folder # kpt-set: grafana.${host}/dashboard-folder
           #      searchNamespace: ALL
           provider:
             disableDelete: false
@@ -111,11 +109,9 @@ helmCharts:
           enabled: false
           label: grafana_datasource
           labelValue: "1"
-
       plugins:
         - grafana-github-datasource
         - grafana-piechart-panel
-
       dashboardProviders:
         dashboardproviders.yaml:
           apiVersion: 1

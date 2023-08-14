@@ -45,18 +45,18 @@ helmCharts:
                 token: secret:kiali:grafanaToken
               enabled: true
               in_cluster_url: http://grafana.monitoring.svc.cluster.local
-              url: https://grafana.cluster.sciops.net
+              url: https://grafana.unset-127-0-0-1.nip.io # kpt-set: https://grafana.${host}
             tracing:
               enabled: true
               in_cluster_url: "http://jaeger-query.observability.svc.cluster.local:16686"
               use_grpc: false
-              url: "https://jaeger.cluster.sciops.net/jaeger"
+              url: "https://jaeger.unset-127-0-0-1.nip.io/jaeger" # kpt-set: https://jaeger.${host}/jaeger
           auth:
             strategy: openid
             openid:
               client_id: kiali-client
               password: secret:kiali:oidc-secret
-              issuer_uri: https://dex.cluster.sciops.net
+              issuer_uri: https://dex.unset-127-0-0-1.nip.io # kpt-set: https://dex.${host}
               username_claim: preferred_username
               disable_rbac: true
               scopes:

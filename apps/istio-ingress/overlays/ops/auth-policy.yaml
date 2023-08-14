@@ -12,12 +12,12 @@ spec:
     - to:
         - operation:
             hosts:
-              - "prometheus.cluster.sciops.net"
-              - "kiali.cluster.sciops.net"
-              - "jaeger.cluster.sciops.net"
-              - "argocd.cluster.sciops.net"
-              - "grafana.cluster.sciops.net"
-              - "cluster.sciops.net"
+              - "prometheus.unset-127-0-0-1.nip.io" # kpt-set: prometheus.${host}
+              - "kiali.unset-127-0-0-1.nip.io" # kpt-set: kiali.${host}
+              - "jaeger.unset-127-0-0-1.nip.io" # kpt-set: jaeger.${host}
+              - "argocd.unset-127-0-0-1.nip.io" # kpt-set: argocd.${host}
+              - "grafana.unset-127-0-0-1.nip.io" # kpt-set: grafana.${host}
+              - "unset-127-0-0-1.nip.io" # kpt-set: ${host}
       when:
         - key: request.headers[x-envoy-external-address]
           values:
@@ -25,6 +25,6 @@ spec:
     - to:
         - operation:
             hosts:
-              - "cluster.sciops.net"
-              - "dex.cluster.sciops.net"
-              - "argocd.cluster.sciops.net"
+              - "unset-127-0-0-1.nip.io" # kpt-set: ${host}
+              - "dex.unset-127-0-0-1.nip.io" # kpt-set: dex.${host}
+              - "argocd.unset-127-0-0-1.nip.io" # kpt-set: argocd.${host}

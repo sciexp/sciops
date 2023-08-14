@@ -24,6 +24,6 @@ helmCharts:
       ingester:
         appProtocol:
           grpc: tcp
-      distributor:  
+      distributor:
         appProtocol:
           grpc: tcp

@@ -17,25 +17,25 @@ spec:
       tls:
         httpsRedirect: true
       hosts:
-        - "prometheus.cluster.sciops.net"
-        - "kiali.cluster.sciops.net"
-        - "jaeger.cluster.sciops.net"
-        - "dex.cluster.sciops.net"
-        - "argocd.cluster.sciops.net"
-        - "grafana.cluster.sciops.net"
-        - "cluster.sciops.net"
+        - "prometheus.unset-127-0-0-1.nip.io" # kpt-set: prometheus.${host}
+        - "kiali.unset-127-0-0-1.nip.io" # kpt-set: kiali.${host}
+        - "jaeger.unset-127-0-0-1.nip.io" # kpt-set: jaeger.${host}
+        - "dex.unset-127-0-0-1.nip.io" # kpt-set: dex.${host}
+        - "argocd.unset-127-0-0-1.nip.io" # kpt-set: argocd.${host}
+        - "grafana.unset-127-0-0-1.nip.io" # kpt-set: grafana.${host}
+        - "unset-127-0-0-1.nip.io" # kpt-set: ${host}
     - port:
         name: https-cluster
         number: 443
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        credentialName: cluster.sciops.net
+        credentialName: unset-127-0-0-1.nip.io # kpt-set: ${host}
       hosts:
-        - "prometheus.cluster.sciops.net"
-        - "kiali.cluster.sciops.net"
-        - "jaeger.cluster.sciops.net"
-        - "dex.cluster.sciops.net"
-        - "argocd.cluster.sciops.net"
-        - "grafana.cluster.sciops.net"
-        - "cluster.sciops.net"
+        - "prometheus.unset-127-0-0-1.nip.io" # kpt-set: prometheus.${host}
+        - "kiali.unset-127-0-0-1.nip.io" # kpt-set: kiali.${host}
+        - "jaeger.unset-127-0-0-1.nip.io" # kpt-set: jaeger.${host}
+        - "dex.unset-127-0-0-1.nip.io" # kpt-set: dex.${host}
+        - "argocd.unset-127-0-0-1.nip.io" # kpt-set: argocd.${host}
+        - "grafana.unset-127-0-0-1.nip.io" # kpt-set: grafana.${host}
+        - "unset-127-0-0-1.nip.io" # kpt-set: ${host}

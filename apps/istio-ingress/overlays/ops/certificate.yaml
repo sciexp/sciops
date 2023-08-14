@@ -1,13 +1,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: cluster.sciops.net
+  name: unset-127-0-0-1.nip.io # kpt-set: ${host}
 spec:
-  commonName: cluster.sciops.net
+  commonName: unset-127-0-0-1.nip.io # kpt-set: ${host}
   dnsNames:
-    - cluster.sciops.net
-    - "*.cluster.sciops.net"
+    - unset-127-0-0-1.nip.io # kpt-set: ${host}
+    - "*.unset-127-0-0-1.nip.io" # kpt-set: *.${host}
   issuerRef:
     kind: ClusterIssuer
-    name: cluster.sciops.net
-  secretName: cluster.sciops.net
+    name: unset-127-0-0-1.nip.io # kpt-set: ${host}
+  secretName: unset-127-0-0-1.nip.io # kpt-set: ${host}

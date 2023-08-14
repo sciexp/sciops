@@ -11,8 +11,8 @@ helmCharts:
       fullnameOverride: vcluster-kf2
       syncer:
         extraArgs:
-          - --tls-san="kf2.k.cluster.sciops.net"
-          - --out-kube-config-server="https://kf2.k.cluster.sciops.net"
+          - --tls-san="kf2.k.unset-127-0-0-1.nip.io" # kpt-set: --tls-san="kf2.k.${host}"
+          - --out-kube-config-server="https://kf2.k.unset-127-0-0-1.nip.io" # kpt-set: --out-kube-config-server="https://kf2.k.${host}"
         kubeConfigContextName: "vcluster-kf2"
       storage:
         persistence: true

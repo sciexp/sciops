@@ -18,7 +18,6 @@ helmCharts:
       rbac:
         create: true
         clusterRole: true
-
   - name: jaeger
     releaseName: jaeger
     version: 0.71.10

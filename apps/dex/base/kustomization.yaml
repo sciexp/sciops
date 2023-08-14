@@ -33,7 +33,7 @@ helmCharts:
               name: github-client
               key: kiali-secret
       config:
-        issuer: https://dex.cluster.sciops.net
+        issuer: https://dex.unset-127-0-0-1.nip.io # kpt-set: https://dex.${host}
         storage:
           type: memory
         connectors:
@@ -43,7 +43,7 @@ helmCharts:
             config:
               clientID: $GITHUB_CLIENT_ID
               clientSecret: $GITHUB_CLIENT_SECRET
-              redirectURI: https://dex.cluster.sciops.net/callback
+              redirectURI: https://dex.unset-127-0-0-1.nip.io/callback # kpt-set: https://dex.${host}/callback
               orgs:
                 - name: UNSET_ORG # kpt-set: ${github_org}
                   teams:
@@ -59,15 +59,13 @@ helmCharts:
             redirectURIs:
               - "http://127.0.0.1:5555/callback"
             secret: ZXhhbXBsZS1hcHAtc2VjcmV0
-
           - id: jaeger-query
             name: "Jaeger"
             redirectURIs:
-              - "https://jaeger.cluster.sciops.net/oauth2/callback"
+              - "https://jaeger.unset-127-0-0-1.nip.io/oauth2/callback" # kpt-set: https://jaeger.${host}/oauth2/callback
             SecretEnv: JAEGER_CLIENT_SECRET
-
           - id: kiali-client
             name: "Kiali"
             redirectURIs:
-              - "https://kiali.cluster.sciops.net/kiali"
+              - "https://kiali.unset-127-0-0-1.nip.io/kiali" # kpt-set: https://kiali.${host}/kiali
             SecretEnv: KIALI_CLIENT_SECRET

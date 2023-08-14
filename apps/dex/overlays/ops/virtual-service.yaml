@@ -1,4 +1,3 @@
----
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
@@ -6,7 +5,7 @@ metadata:
   namespace: dex
 spec:
   hosts:
-    - "dex.cluster.sciops.net"
+    - "dex.unset-127-0-0-1.nip.io" # kpt-set: dex.${host}
   gateways:
     - istio-system/istio-ingressgateway
   http:
