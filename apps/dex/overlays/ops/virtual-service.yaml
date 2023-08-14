@@ -19,24 +19,3 @@ spec:
             port:
               number: 5556
             host: dex.dex.svc.cluster.local
-# ---
-# apiVersion: networking.istio.io/v1alpha3
-# kind: VirtualService
-# metadata:
-#   name: dex-k8s-authenticator
-#   namespace: dex
-# spec:
-#   hosts:
-#     - "kube-login.cluster.sciops.net"
-#   gateways:
-#     - istio-system/istio-ingressgateway
-#   http:
-#     - headers:
-#         request:
-#           set:
-#             X-Forwarded-Port: "443"
-#       route:
-#         - destination:
-#             port:
-#               number: 80
-#             host: dex-k8s-authenticator.dex.svc.cluster.local
