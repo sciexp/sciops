@@ -45,7 +45,7 @@ helmCharts:
               clientSecret: $GITHUB_CLIENT_SECRET
               redirectURI: https://dex.cluster.sciops.net/callback
               orgs:
-                - name: sciops
+                - name: UNSET_ORG # kpt-set: ${github_org}
                   teams:
                     - platform
               loadAllGroups: false
