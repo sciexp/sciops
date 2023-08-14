@@ -1,21 +1,20 @@
----
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: argocd
   namespace: argocd
   annotations:
-    link.argocd.argoproj.io/external-link: https://argocd.cluster.sciops.net
+    link.argocd.argoproj.io/external-link: https://argocd.unset-127-0-0-1.nip.io # kpt-set: https://argocd.${host}
 spec:
   hosts:
-    - "argocd.cluster.sciops.net"
+    - "argocd.unset-127-0-0-1.nip.io" # kpt-set: argocd.${host}
   gateways:
     - istio-system/istio-ingressgateway
   http:
     - match:
-        - uri: 
+        - uri:
             prefix: /
-      route: 
+      route:
         - destination:
             host: argocd-server.argocd.svc.cluster.local
             port:

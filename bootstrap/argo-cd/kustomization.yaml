@@ -25,9 +25,8 @@ configMapGenerator:
       - conf/repositories
     literals:
       - admin.enabled=true
-      - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor
-        LoadRestrictionsNone"
-      - url=https://argocd.cluster.sciops.net
+      - kustomize.buildOptions="--enable-alpha-plugins --enable-helm --load-restrictor LoadRestrictionsNone"
+      - url=https://argocd.unset-127-0-0-1.nip.io # kpt-set: url=https://argocd.${host}
     name: argocd-cm
     options:
       labels:

@@ -9,5 +9,5 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  ## TIP: you may need to set this if you do not have a default storage class
-  #storageClassName: ""
+      ## TIP: you may need to set this if you do not have a default storage class
+      #storageClassName: ""

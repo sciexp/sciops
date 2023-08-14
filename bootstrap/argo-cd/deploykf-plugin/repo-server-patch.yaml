@@ -28,7 +28,6 @@ spec:
           volumeMounts:
             - name: deploykf-plugin-tools
               mountPath: /tools
-
         - name: deploykf-plugin-setup--helm
           image: docker.io/alpine/helm:3.12.2
           command:
@@ -41,7 +40,6 @@ spec:
           volumeMounts:
             - name: deploykf-plugin-tools
               mountPath: /tools
-
         - name: deploykf-plugin-setup--deploykf
           image: ghcr.io/deploykf/cli:0.1.2
           command:
@@ -54,7 +52,6 @@ spec:
           volumeMounts:
             - name: deploykf-plugin-tools
               mountPath: /tools
-
       containers:
         - name: deploykf-plugin
           image: docker.io/buildpack-deps:bookworm-curl
@@ -81,14 +78,12 @@ spec:
               mountPath: /home/argocd/cmp-server/plugins
             - name: deploykf-plugin-tools
               mountPath: /usr/local/bin
-
             ## deploykf
             - name: deploykf-plugin-config
               mountPath: /home/argocd/cmp-server/config/plugin.yaml
               subPath: plugin.yaml
             - name: deploykf-plugin-assets
               mountPath: /.deploykf/assets
-
             ## helm
             - name: helm-working-dir
               mountPath: /helm-working-dir

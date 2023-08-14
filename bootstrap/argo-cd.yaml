@@ -19,7 +19,7 @@ spec:
   project: default
   source:
     path: bootstrap/argo-cd
-    repoURL: https://github.com/scientistexperience/test-cluster-ops.git
+    repoURL: https://github.com/unset-orgname/sciops.git # kpt-set: https://github.com/${github_ops_repo}.git
   syncPolicy:
     automated:
       allowEmpty: true
