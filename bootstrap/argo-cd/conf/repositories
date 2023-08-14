@@ -1,4 +1,4 @@
-- name: sciops
+- name: $GH_REPO_NAME
   url: https://github.com/$GH_OPS_REPO.git
 - name: crossplane
   type: helm
