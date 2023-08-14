@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: deploykf-kf2-app-of-apps
+  name: deploykf-kf-app-of-apps
   namespace: argocd
   labels:
-    app.kubernetes.io/name: deploykf-kf2-app-of-apps
+    app.kubernetes.io/name: deploykf-kf-app-of-apps
     app.kubernetes.io/part-of: deploykf
 spec:
   project: "default"
@@ -15,7 +15,7 @@ spec:
     ##
     repoURL: "https://github.com/unset-orgname/sciops.git" # kpt-set: https://github.com/${github_ops_repo}.git
     targetRevision: "main"
-    path: "./apps/deploykf-kf2"
+    path: "./apps/deploykf-kf"
     ## plugin configuration
     ##
     plugin:

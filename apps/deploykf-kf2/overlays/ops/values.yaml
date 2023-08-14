@@ -10,7 +10,7 @@ argocd:
   ##  - if non-empty, `argocd.destination` must be a remote cluster, this is because
   ##    a single cluster can only have one instance of deployKF
   ##
-  appNamePrefix: "kf2-"
+  appNamePrefix: "kf-"
 
   ## the namespace in which argocd is deployed
   ##
@@ -18,7 +18,7 @@ argocd:
 
   ## the project used for deployKF argocd applications
   ##
-  project: kf2
+  project: kf
 
   ## the source used for deployKF argocd applications
   ##
@@ -48,7 +48,7 @@ argocd:
   ##  - the value of `destination.name` takes precedence over `destination.server`
   ##
   destination:
-    server: https://kf2.k.cluster.sciops.net
+    server: https://kf.k.cluster.sciops.net
     name: ""
 
 

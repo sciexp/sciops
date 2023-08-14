@@ -1,9 +1,9 @@
 {
-  "appName": "vcluster-kf2",
-  "userGivenName": "vcluster-kf2",
-  "destNamespace": "vcluster-kf2",
+  "appName": "vcluster-kf",
+  "userGivenName": "vcluster-kf",
+  "destNamespace": "vcluster-kf",
   "destServer": "https://kubernetes.default.svc",
-  "srcPath": "apps/vcluster-kf2/overlays/ops",
+  "srcPath": "apps/vcluster-kf/overlays/ops",
   "srcRepoURL": "https://github.com/$GH_OPS_REPO.git",
   "srcTargetRevision": "",
   "CreateNamespace": true,
