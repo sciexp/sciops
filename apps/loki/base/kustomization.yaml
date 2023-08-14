@@ -1,8 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: monitoring
-# resources:
-# - loki-gcs-bucket.yaml
 helmCharts:
   - name: loki-distributed
     includeCRDs: true
@@ -15,21 +13,8 @@ helmCharts:
       labels:
         app: loki
       global: {}
-        # lokiGcsBucket: 
-        #   name: loki-gcs-bucket
-        #   key: bucket_name
-        # clusterDomain: ""
       loki:
         appProtocol: tcp
-        # auth_enabled: false
-        # distributorLabels:
-        #   app: loki
-        # storageConfig:
-        #   type: gcs
-        #   gcs:
-        #     bucketnames: $(datadir .Values.global.lokiGcsBucket)
-      # gateway:
-      #   enabled: false
       queryFrontend:
         appProtocol:
           grpc: tcp
@@ -42,23 +27,3 @@ helmCharts:
       distributor:  
         appProtocol:
           grpc: tcp
-      # gateway:
-      #   enabled: false
-      # memberlist:
-      #   service:
-      #     ports:
-      #       http: 
-      #         appProtocol: tcp
-      #     publishNotReadyAddresses: true
-      # write:
-      #   persistence:
-      #     enableStatefulSetAutoDeletePVC: false
-      # read:
-      #   persistence:
-      #     enableStatefulSetAutoDeletePVC: false
-      # backend:
-      #   persistence:
-      #     enableStatefulSetAutoDeletePVC: false
-      # singleBinary:
-      #   persistence:
-      #     enableStatefulSetAutoDeletePVC: false
