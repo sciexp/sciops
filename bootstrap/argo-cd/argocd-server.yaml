@@ -3,7 +3,13 @@ kind: Deployment
 metadata:
   name: argocd-server
 spec:
+  selector:
+    matchLabels:
+      app: argocd-server
   template:
+    metadata:
+      labels:
+        app: argocd-server
     spec:
       containers:
       - name: argocd-server
