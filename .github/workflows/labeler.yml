@@ -4,8 +4,12 @@ on:
   push:
     branches:
       - main
-      - master
       - dev
+
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
 
 jobs:
   labeler:
