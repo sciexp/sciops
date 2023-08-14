@@ -25,7 +25,7 @@ spec:
         - "grafana.cluster.sciops.net"
         - "cluster.sciops.net"
     - port:
-        name: https-sciops
+        name: https-cluster
         number: 443
         protocol: HTTPS
       tls:
@@ -39,12 +39,3 @@ spec:
         - "argocd.cluster.sciops.net"
         - "grafana.cluster.sciops.net"
         - "cluster.sciops.net"
-    # - port:
-    #     name: https-hostname
-    #     number: 443
-    #     protocol: HTTPS
-    #   tls:
-    #     mode: SIMPLE
-    #     credentialName: hostname.net # This should match the Certificate secretName
-    #   hosts:
-    #     - "*.hostname.net" # This should match a DNS name in the Certificate
