@@ -30,6 +30,6 @@ helmCharts:
             clientSecret: $CLIENT_SECRET
             redirectURI: https://loft.cluster.sciops.net/auth/github/callback
             orgs:
-              name: sciops
+              name: UNSET_ORG # kpt-set: ${github_org}
               teams:
                 - platform
