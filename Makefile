@@ -25,6 +25,22 @@ env_print: ## Print a subset of environment variables defined in ".envrc" file.
 ############################################
 ############################################
 
+kpt_update_domain: ## Update domain name with kpt
+	kpt fn eval \
+	--image gcr.io/kpt-fn/search-replace:v0.2.0 \
+	--truncate-output=false \
+	--output stdout \
+	-- \
+	by-value-regex='(.*)$(CLUSTER_DOMAIN)(.*)' \
+	put-value='$${1}$(EXAMPLE_CLUSTER_DOMAIN)$${2}'
+
+kpt_render_test: ## Run kpt render into kpttest subdirectory.
+	rm -fr ./kpttest/
+	kpt fn render --truncate-output=false -o kpttest/
+
+kpt_render: ## !! DESTRUCTIVE !! kpt render will overwrite files.
+	kpt fn render --truncate-output=false
+
 bootstrap_argocd: ## Bootstrap argocd with argocd-autopilot.
 	argocd-autopilot repo bootstrap \
 	--provider github \
