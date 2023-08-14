@@ -41,8 +41,18 @@ kpt_render_test: ## Run kpt render into kpttest subdirectory.
 kpt_render: ## !! DESTRUCTIVE !! kpt render will overwrite files.
 	kpt fn render --truncate-output=false
 
-render_argocd_policy: ## Render argocd policy.
-	envsubst '$${GH_ORG_NAME}' < bootstrap/argo-cd/conf/policy_template.csv > bootstrap/argo-cd/conf/policy.csv
+define render_file
+	envsubst '$${$(1)}' < $(2) > $(2).tmp
+	mv $(2).tmp $(2)
+endef
+
+render_argocd_conf: ## Render argocd policy.
+	$(call render_file,GH_ORG_NAME,bootstrap/argo-cd/conf/policy.csv)
+	$(call render_file,GH_OPS_REPO,bootstrap/argo-cd/conf/repositories)
+	$(call render_file,GH_REPO_NAME,bootstrap/argo-cd/conf/repositories)
+
+render_json_files: ## Render json files.
+	find ./ -name '*.json' -exec sh -c 'envsubst < "$$1" > "$$1.tmp" && mv "$$1.tmp" "$$1"' sh {} \;
 
 bootstrap_argocd: ## Bootstrap argocd with argocd-autopilot.
 	argocd-autopilot repo bootstrap \
