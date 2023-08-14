@@ -1,5 +1,5 @@
-- name: test-cluster-ops
-  url: https://github.com/scientistexperience/test-cluster-ops.git
+- name: sciops
+  url: https://github.com/$GH_OPS_REPO.git
 - name: crossplane
   type: helm
   url: https://charts.crossplane.io/stable
