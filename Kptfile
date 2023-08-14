@@ -5,31 +5,28 @@ metadata:
 info:
   emails:
     - scientistexperience@gmail.com
-  description: |
-    This is a kpt package providing a template for a 
-    (git)ops-managed cluster for scientific data analysis.
-    Please see README.md in the upstream repository for more details.
+  description: "This is a kpt package providing a template for a \n(git)ops-managed cluster for scientific data analysis.\nPlease see README.md in the upstream repository for more details.\n"
 pipeline:
-  # validators:
-  #   - image: gcr.io/kpt-fn/kubeval:v0.3
-  #     configMap:
-  #       strict: "false"
-  #       ignore_missing_schemas: "true"
+  validators:
+    - image: gcr.io/kpt-fn/kubeval:v0.3
+      configMap:
+        strict: "false"
+        ignore_missing_schemas: "true"
   mutators:
-    - image: gcr.io/kpt-fn/search-replace:v0.2.0
+    - image: gcr.io/kpt-fn/apply-setters:v0.2.0
       configMap:
-        by-value-regex: (.*)cluster.sciops.net(.*)
-        put-comment: 'kpt-set: ${1}${host}${2}'
-        put-value: ${1}unset-127-0-0-1.nip.io${2}
-    - image: gcr.io/kpt-fn/search-replace:v0.2.0
-      configMap:
-        by-value-regex: (.*)scientistexperience/test-cluster-ops(.*)
-        put-comment: 'kpt-set: ${1}${github_ops_repo}${2}'
-        put-value: ${1}unset-orgname/sciops${2}
-    # - image: gcr.io/kpt-fn/apply-setters:v0.2.0
+        host: cluster-127-0-0-1.nip.io
+        cluster_issuer_email: admin@example.com
+        github_org: yourorg
+        github_ops_repo: orgname/sciops
+        cloud_project_id: project-11111
+    # - image: gcr.io/kpt-fn/search-replace:v0.2.0
     #   configMap:
-    #     host: cluster-127-0-0-1.nip.io
-    #     cluster_issuer_email: admin@example.com
-    #     github_org: yourorg
-    #     github_ops_repo: orgname/sciops
-    #     cloud_project_id: project-11111
+    #     by-value-regex: (.*)unset-127-0-0-1.nip.io(.*)
+    #     put-comment: 'kpt-set: ${1}${host}${2}'
+    #     put-value: ${1}unset-127-0-0-1.nip.io${2}
+    # - image: gcr.io/kpt-fn/search-replace:v0.2.0
+    #   configMap:
+    #     by-value-regex: (.*)unset-orgname/sciops(.*)
+    #     put-comment: 'kpt-set: ${1}${github_ops_repo}${2}'
+    #     put-value: ${1}unset-orgname/sciops${2}
