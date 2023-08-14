@@ -69,7 +69,7 @@ forward_argocd: ## Forward argocd server port to localhost.
 	kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 login_argocd: ## Login to argocd
-	argocd login argocd.cluster.sciops.net \
+	argocd login argocd.$(CLUSTER_DOMAIN) \
 	--username admin \
 	--password $(ARGOCD_PASSWORD) \
 	--insecure
