@@ -16,9 +16,9 @@ p, role:dev-team, applications, get, */*, allow
 p, role:dev-team, applications, delete, */pod, allow
 p, role:dev-team, applications, action/*, */*, allow
 
-# Groups here resembles to Github Teams
-g, sciops:platform, role:org-admin
-g, sciops:dev, role:dev-team
+# Groups here correspond to GitHub teams
+g, $GH_ORG_NAME:platform, role:org-admin
+g, $GH_ORG_NAME:dev, role:dev-team
 
 # Backstage user permissions
 g, backstage, role:org-admin
