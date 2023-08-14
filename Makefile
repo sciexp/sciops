@@ -41,6 +41,9 @@ kpt_render_test: ## Run kpt render into kpttest subdirectory.
 kpt_render: ## !! DESTRUCTIVE !! kpt render will overwrite files.
 	kpt fn render --truncate-output=false
 
+render_argocd_policy: ## Render argocd policy.
+	envsubst '$${GH_ORG_NAME}' < bootstrap/argo-cd/conf/policy_template.csv > bootstrap/argo-cd/conf/policy.csv
+
 bootstrap_argocd: ## Bootstrap argocd with argocd-autopilot.
 	argocd-autopilot repo bootstrap \
 	--provider github \
