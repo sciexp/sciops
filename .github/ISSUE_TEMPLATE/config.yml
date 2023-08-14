@@ -1,0 +1,4 @@
+contact_links:
+  - name: questions
+    url: https://github.com/sciexp/sciops/discussions
+    about: please post and host discussion in https://github.com/sciexp/sciops/discussions
