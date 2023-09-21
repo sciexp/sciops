@@ -204,38 +204,3 @@ anonymize-env: # Anonymize .envrc file
 		fi; \
 	done < \"\$${source_file}\""
 	@echo "Anonymized .envrc file has been saved as .envrc.example"
-
-# Pods
-# Services
-# StatefulSets
-# Deployments
-# ReplicationControllers
-# DaemonSets
-# ReplicaSets
-# Jobs
-# CronJobs
-
-# Ingresses
-# ConfigMaps
-# Secrets
-# PersistentVolumes
-# PersistentVolumeClaims
-# Endpoints
-# Nodes
-# Namespaces
-# ServiceAccounts
-# Roles
-# RoleBindings
-# ClusterRoles
-# ClusterRoleBindings
-# CustomResourceDefinitions
-# StorageClasses
-# VolumeSnapshots
-# PodDisruptionBudgets
-# LimitRanges
-# ResourceQuotas
-# CertificateSigningRequests
-# MutatingWebhookConfigurations
-# ValidatingWebhookConfigurations
-# PriorityClasses
-# RuntimeClasses
