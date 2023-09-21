@@ -152,8 +152,6 @@ generate_secrets: ## Generate sealed secrets for apps.
 	# @./secrets/generate.sh -a istio -s sso -n argocd -k dex.github.clientSecret -v $(GH_APP_CLIENT_SECRET) -e ops -c ops
 	# @./secrets/generate.sh -a istio -s github-secrets -n argocd -k GITHUB_CLIENT_ID -v $(GH_APP_CLIENT_ID) -e ops -c ops
 	# @./secrets/generate.sh -a istio -s github-secrets -n argocd -k GITHUB_CLIENT_SECRET -v $(GH_APP_CLIENT_SECRET) -e ops -c ops
-	@./secrets/generate.sh -a loft -s github-secrets -n loft -k client-id -v $(LOFT_GITHUB_CLIENT_ID) -e ops -c ops
-	@./secrets/generate.sh -a loft -s github-secrets -n loft -k client-secret -v $(LOFT_GITHUB_CLIENT_SECRET) -e ops -c ops
 
 remove_context: ## Remove kube context: make remove_context CONTEXT_NAME=""
 ifndef CONTEXT_NAME
