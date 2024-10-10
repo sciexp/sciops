@@ -4,7 +4,7 @@ namespace: cert-manager
 helmCharts:
   - name: cert-manager
     releaseName: cert-manager
-    version: 1.12.2
+    version: v1.16.1
     repo: https://charts.jetstack.io
     valuesInline:
       installCRDs: true
