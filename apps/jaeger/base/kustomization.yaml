@@ -9,7 +9,7 @@ commonLabels:
 helmCharts:
   - name: jaeger-operator
     releaseName: jaegertracing
-    version: 2.46.2
+    version: 2.57.0
     repo: https://jaegertracing.github.io/helm-charts
     includeCRDs: true
     namespace: observability
