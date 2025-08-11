@@ -20,7 +20,7 @@ helmCharts:
         clusterRole: true
   - name: jaeger
     releaseName: jaeger
-    version: 0.71.10
+    version: 0.74.1
     repo: https://jaegertracing.github.io/helm-charts
     namespace: observability
     valuesInline:
